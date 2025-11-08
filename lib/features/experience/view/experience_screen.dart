@@ -38,19 +38,20 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                   ],
                 ),
                 Spacer(),
+
                 BlocBuilder<ThemeCubit, ThemeState>(
                   builder: (context, state) {
                     return TopIcon(
-                      icon: state is LightThemeState ? Icons.dark_mode : Icons.light_mode,
+                      icon: state is LightThemeState ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
                       onTap: () {
                         context.read<ThemeCubit>().toggleTheme();
                       },
                     );
                   },
                 ),
+                12.horizontalSizedBox,
 
-                6.horizontalSizedBox,
-                TopIcon(icon: Icons.bookmark, onTap: () {}),
+                TopIcon(icon: Icons.favorite_outline_rounded, onTap: () {}),
               ],
             ),
             20.verticalSizedBox,

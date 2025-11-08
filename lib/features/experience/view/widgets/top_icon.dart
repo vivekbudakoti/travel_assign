@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_assign/core/theme/colors.dart';
+import 'package:travel_assign/core/utils/extension.dart';
 
 class TopIcon extends StatelessWidget {
   final VoidCallback? onTap;
@@ -11,7 +13,11 @@ class TopIcon extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
-      child: Container(padding: EdgeInsets.all(4), child: Icon(icon)),
+      child: CircleAvatar(
+        backgroundColor: AppColors.white,
+        radius: 16,
+        child: Icon(icon, color: AppColors.primaryDark, size: 22),
+      ),
     );
   }
 }

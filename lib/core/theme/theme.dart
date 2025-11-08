@@ -30,6 +30,7 @@ class AppTheme {
         brightness: brightness,
         surface: isDark ? AppColors.primaryLight : AppColors.white,
         primary: isDark ? AppColors.primaryDark : AppColors.primaryLight,
+        inversePrimary: isDark ? AppColors.primaryLight : AppColors.primaryDark,
         onTertiary: isDark ? AppColors.white : AppColors.primaryDark,
       ),
       textTheme: TextTheme(
