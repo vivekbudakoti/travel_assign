@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travel_assign/core/style/app_textstyle.dart';
-import 'package:travel_assign/core/style/colors.dart';
+import 'package:travel_assign/core/theme/style/app_textstyle.dart';
+import 'package:travel_assign/core/theme/colors.dart';
 
 class AppTheme {
   static ThemeData get lightTheme => _buildTheme(
@@ -29,6 +29,7 @@ class AppTheme {
         seedColor: isDark ? AppColors.primaryDark : AppColors.primaryLight,
         brightness: brightness,
         surface: isDark ? AppColors.primaryLight : AppColors.white,
+        primary: isDark ? AppColors.primaryDark : AppColors.primaryLight,
       ),
       textTheme: TextTheme(
         headlineLarge: AppTextStyles.headlineLarge.copyWith(color: textColor),
@@ -36,6 +37,7 @@ class AppTheme {
         bodyLarge: AppTextStyles.bodyLarge.copyWith(color: textColor),
         bodyMedium: AppTextStyles.bodyMedium.copyWith(color: textColor),
         bodySmall: AppTextStyles.bodySmall.copyWith(color: textColor),
+        titleLarge: AppTextStyles.titleLarge.copyWith(color: textColor),
         labelLarge: AppTextStyles.label.copyWith(color: textColor),
       ),
     );

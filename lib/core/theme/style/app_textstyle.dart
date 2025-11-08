@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
+import '../colors.dart';
 
 class AppTextStyles {
   // Headings
@@ -30,13 +30,20 @@ class AppTextStyles {
 
   static const TextStyle bodySmall = TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.w300,
+    fontWeight: FontWeight.w400,
     color: AppColors.primaryTextLight,
   );
 
   // Labels / Buttons
   static const TextStyle label = TextStyle(
     fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryTextLight,
+  );
+
+  //Title
+  static const TextStyle titleLarge = TextStyle(
+    fontSize: 18,
     fontWeight: FontWeight.w600,
     color: AppColors.primaryTextLight,
   );
