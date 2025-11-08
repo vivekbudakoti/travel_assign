@@ -1,21 +1,31 @@
+import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_assign/core/constants/constants.dart';
-import 'package:travel_assign/core/style/theme.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
+import 'package:travel_assign/core/style/theme.dart';
 
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(LightThemeState());
+  ThemeCubit() : super(DarkThemeState());
 
   final SharedPrefUtil _prefs = SharedPrefUtil();
   final _themeKey = SharedPreferencesConstants.isDarkTheme;
 
   Future<void> loadTheme() async {
-    final isDark = _prefs.getBool(_themeKey) ?? false;
-    emit(isDark ? DarkThemeState() : LightThemeState());
+    final saved = _prefs.getBool(_themeKey);
+
+    if (saved == null) {
+      final brightness = PlatformDispatcher.instance.platformBrightness;
+      final isDark = brightness == Brightness.dark;
+
+      emit(isDark ? DarkThemeState() : LightThemeState());
+
+      await _saveTheme(isDark);
+    } else {
+      emit(saved ? DarkThemeState() : LightThemeState());
+    }
   }
 
   Future<void> toggleTheme() async {
@@ -29,7 +39,6 @@ class ThemeCubit extends Cubit<ThemeState> {
   }
 
   Future<void> _saveTheme(bool isDark) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_themeKey, isDark);
+    await _prefs.setBool(_themeKey, isDark);
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:travel_assign/core/routes/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_assign/core/routes/router.dart';
 import 'package:travel_assign/core/style/theme.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
+import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
 import 'package:travel_assign/l10n/app_localizations.dart';
 
 void main() async {
@@ -10,7 +12,7 @@ void main() async {
   final prefs = SharedPrefUtil();
   await prefs.init();
 
-  runApp(const MyApp());
+  runApp(BlocProvider(create: (_) => ThemeCubit()..loadTheme(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,34 +20,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
-      localizationsDelegates: const [AppLocalizations.delegate],
-      supportedLocales: const [Locale('en')],
-      routerConfig: AppRouter.router,
-    );
-  }
-}
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      builder: (context, state) {
+        ThemeMode themeMode;
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+        if (state is LightThemeState) {
+          themeMode = ThemeMode.light;
+        } else if (state is DarkThemeState) {
+          themeMode = ThemeMode.dark;
+        } else {
+          themeMode = ThemeMode.system;
+        }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Text("data"),
-          Image.network(
-            "https://images.unsplash.com/photo-1567597243073-2d274aabecec?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFBlcnV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
-            fit: BoxFit.cover,
-            width: double.maxFinite,
-            height: MediaQuery.of(context).size.height / 2,
-          ),
-        ],
-      ),
+        return MaterialApp.router(
+          title: 'Travel Assignment',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeMode,
+          localizationsDelegates: const [AppLocalizations.delegate],
+          supportedLocales: const [Locale('en')],
+          routerConfig: AppRouter.router,
+        );
+      },
     );
   }
 }

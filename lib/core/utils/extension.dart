@@ -21,3 +21,8 @@ extension SizedBoxExtension on num {
   SizedBox get verticalSizedBox => SizedBox(height: toDouble());
   SizedBox get horizontalSizedBox => SizedBox(width: toDouble());
 }
+
+extension MediQueryExtension on BuildContext {
+  EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
+}
+
