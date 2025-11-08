@@ -21,9 +21,27 @@ class ExperienceCardFooter extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TransluentCard(
-          takeFullWidth: false,
-          child: Text(topTileTitle, style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
+        Row(
+          children: [
+            TransluentCard(
+              takeFullWidth: false,
+              child: Text("Nature", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
+            ),
+            2.horizontalSizedBox,
+            TransluentCard(
+              takeFullWidth: false,
+              child: Text("Adventure", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
+            ),
+            2.horizontalSizedBox,
+            TransluentCard(
+              takeFullWidth: false,
+              child: Text("Spritual", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
+            ),
+            TransluentCard(
+              takeFullWidth: false,
+              child: Text("+2", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
+            ),
+          ],
         ),
         4.verticalSizedBox,
         TitleSubtitleCard(title: bottomTileTitle, subtitle: bottomTileSubText),

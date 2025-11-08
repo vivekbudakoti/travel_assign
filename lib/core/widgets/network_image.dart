@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_assign/core/widgets/shimmer_container.dart';
 
 class AppNetworkImage extends StatelessWidget {
   final String imageUrl;
@@ -20,7 +21,7 @@ class AppNetworkImage extends StatelessWidget {
           image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
         ),
       ),
-      placeholder: (context, url) => CircularProgressIndicator(),
+      placeholder: (context, url) => ShimmerContainer(width: width, height: height),
       errorWidget: (context, url, error) => Icon(Icons.error),
     );
   }
