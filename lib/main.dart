@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:travel_assign/core/routes/routes.dart';
 import 'package:travel_assign/core/style/theme.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
-import 'package:travel_assign/features/onboarding/view/splash_screen.dart';
 import 'package:travel_assign/l10n/app_localizations.dart';
 
 void main() async {
@@ -18,12 +18,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Travel Assignment',
+    return MaterialApp.router(
       theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       localizationsDelegates: const [AppLocalizations.delegate],
       supportedLocales: const [Locale('en')],
-      home: const SplashScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }

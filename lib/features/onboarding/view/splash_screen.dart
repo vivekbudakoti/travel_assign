@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:travel_assign/core/routes/routes.dart';
 import 'package:travel_assign/core/style/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
+import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  static final routeName = '/splashScreen';
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _navigateToNextScreen();
+  }
+
+  void _navigateToNextScreen() async {
+    await Future.delayed(Duration(seconds: 2), () {
+      AppRouter.router.push(InterestScreen.routeName);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
