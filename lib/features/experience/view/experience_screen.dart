@@ -6,6 +6,8 @@ import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
+import 'package:travel_assign/features/experience/view/widgets/circular_heart.dart';
+import 'package:travel_assign/features/experience/view/widgets/experience_card_footer.dart';
 import 'package:travel_assign/features/experience/view/widgets/location_chip.dart';
 import 'package:travel_assign/features/experience/view/widgets/top_icon.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
@@ -61,40 +63,23 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                   children: [
                     AppNetworkImage(
                       imageUrl:
-                          "https://plus.unsplash.com/premium_photo-1661962627529-73e5d332d04a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8U3dpdHplcmxhbmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
+                          "https://images.unsplash.com/photo-1519594445471-0e5f86b3fb09?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fE1vcm9jY298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
                       height: 250,
                       fit: BoxFit.cover,
                     ),
-                    LocationChip(location: "Switzerland"),
+                    LocationChip(location: "Morocco"),
                     Align(
                       alignment: AlignmentGeometry.bottomCenter,
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                        width: double.maxFinite,
-                        padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-                        decoration: BoxDecoration(
-                          color: context.colorScheme.primary.withValues(alpha: 0.3),
-                          // borderRadius: BorderRadius.only(
-                          //   bottomLeft: Radius.circular(16),
-                          //   bottomRight: Radius.circular(16),
-                          // ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Swiss Alps Expedition", style: context.textTheme.titleLarge),
-                            2.verticalSizedBox,
-                            Text(
-                              "The Swiss Alps offer some of the most spectacular mountain scenery in the world. From the Matterhorn’s sharp peak to the peaceful beauty of Lake Lucerne, every view feels unreal. Ride scenic trains like the Glacier Express, or trek through meadows filled with wildflowers. Winter brings world-class skiing in Zermatt and St. Moritz, while summer reveals crystal-clear lakes and charming wooden villages. Whether you hike, ski, or just sip hot chocolate by the fire, the Swiss Alps redefine mountain magic.",
-                              overflow: TextOverflow.ellipsis,
-                              style: context.textTheme.bodySmall,
-                              maxLines: 2,
-                            ),
-                          ],
-                        ),
+                      child: ExperienceCardFooter(
+                        topTileTitle: "Adventure, Nature",
+                        bottomTileTitle: "Sahara Desert Safari",
+                        bottomTileSubText:
+                            "The Sahara is endless beauty and silence rolled into one. Journey across the dunes of Merzouga on camelback as the sun paints the sand in shades of gold and red. Spend nights in Berber tents under skies filled with constellations. The desert’s stillness, warmth, and vastness connect you to something eternal. It’s a place where time slows and nature speaks softly.",
                       ),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: CircularHeart(isFilled: true, onTap: () {}),
                     ),
                   ],
                 ),

@@ -9,4 +9,5 @@ class AppColors {
   static const Color primaryTextDark = Color(0xFFFFFFFF);
   static const Color secondaryText = Color(0xFFFF361D);
   static const Color white = Color(0xFFFFFFFF);
+  static final Color primaryDarkWithAlpha30 = AppColors.primaryDark.withValues(alpha: 0.3);
 }

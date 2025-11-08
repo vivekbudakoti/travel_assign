@@ -30,6 +30,7 @@ class AppTheme {
         brightness: brightness,
         surface: isDark ? AppColors.primaryLight : AppColors.white,
         primary: isDark ? AppColors.primaryDark : AppColors.primaryLight,
+        onTertiary: isDark ? AppColors.white : AppColors.primaryDark,
       ),
       textTheme: TextTheme(
         headlineLarge: AppTextStyles.headlineLarge.copyWith(color: textColor),
