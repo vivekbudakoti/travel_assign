@@ -12,6 +12,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Travel Assign';
 
   @override
+  String get travel => 'Travel';
+
+  @override
+  String get assign => 'Assign';
+
+  @override
   String get welcomeText => 'Welcome to Travel Assign!';
 
   @override

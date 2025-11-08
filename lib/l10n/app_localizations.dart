@@ -99,6 +99,18 @@ abstract class AppLocalizations {
   /// **'Travel Assign'**
   String get appTitle;
 
+  /// No description provided for @travel.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel'**
+  String get travel;
+
+  /// No description provided for @assign.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign'**
+  String get assign;
+
   /// No description provided for @welcomeText.
   ///
   /// In en, this message translates to:

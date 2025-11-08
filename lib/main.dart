@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:travel_assign/core/style/theme.dart';
+import 'package:travel_assign/core/utils/shared_pref_util.dart';
 import 'package:travel_assign/features/onboarding/view/splash_screen.dart';
 import 'package:travel_assign/l10n/app_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = SharedPrefUtil();
+  await prefs.init();
+
   runApp(const MyApp());
 }
 
@@ -13,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Travel Assignment',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+      theme: AppTheme.lightTheme,
       localizationsDelegates: const [AppLocalizations.delegate],
       supportedLocales: const [Locale('en')],
       home: const SplashScreen(),
