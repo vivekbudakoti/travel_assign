@@ -1,12 +1,18 @@
-class InterestsModel {
-  final int id;
-  final String title;
-  final String imageUrl;
+import 'package:travel_assign/core/utils/parser.dart';
 
-  InterestsModel({required this.id, required this.title, required this.imageUrl});
+class InterestsModel {
+  final String? id;
+  final String? title;
+  final String? imageUrl;
+
+  InterestsModel({this.id, this.title, this.imageUrl});
 
   factory InterestsModel.fromJson(Map<String, dynamic> json) {
-    return InterestsModel(id: json['id'], title: json['title'], imageUrl: json['image_url']);
+    return InterestsModel(
+      id: parseString(json['id']),
+      title: parseString(json['title']),
+      imageUrl: parseString(json['image_url']),
+    );
   }
 
   Map<String, dynamic> toJson() {
