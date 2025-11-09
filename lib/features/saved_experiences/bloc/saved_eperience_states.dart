@@ -1,7 +1,15 @@
-abstract class SavedEperienceStates {}
+import 'package:travel_assign/features/experience/model/experience_data_model.dart';
 
-class SavedEperienceLoadingState extends SavedEperienceStates {}
+abstract class SavedExperienceStates {}
 
-class SavedEperienceLoadedState extends SavedEperienceStates {}
+class SavedEperienceInitialstate extends SavedExperienceStates {}
 
-class SavedEperienceErrorState extends SavedEperienceStates {}
+class SavedEperienceLoadingState extends SavedExperienceStates {}
+
+class SavedEperienceLoadedState extends SavedExperienceStates {
+  final List<ExperienceDataModel> experienceData;
+
+  SavedEperienceLoadedState({required this.experienceData});
+}
+
+class SavedEperienceErrorState extends SavedExperienceStates {}

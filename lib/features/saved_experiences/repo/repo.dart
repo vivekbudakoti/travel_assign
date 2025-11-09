@@ -1,3 +1,4 @@
+import 'package:travel_assign/features/experience/model/experience_data_model.dart';
 import 'package:travel_assign/features/saved_experiences/data.dart';
 
 class SavedExperienceRepo {
@@ -9,5 +10,9 @@ class SavedExperienceRepo {
 
   Future<bool> removeSavedExperiences({required String id}) {
     return dataSource.removeExperiences(id: id);
+  }
+
+  Future<List<ExperienceDataModel>> getSavedExperiences() {
+    return dataSource.getSavedExperiences();
   }
 }
