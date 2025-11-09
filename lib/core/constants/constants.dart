@@ -1,5 +1,7 @@
 class SharedPreferencesConstants {
   static const String isDarkTheme = 'is_dark_theme';
+  static const String savedInterest = 'saved_interest';
+
 }
 
 class AppRoutes {

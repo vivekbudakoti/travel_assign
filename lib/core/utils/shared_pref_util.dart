@@ -18,8 +18,8 @@ class SharedPrefUtil {
 
   bool? getBool(String key) => _prefs?.getBool(key);
 
-  Future<void> setString(String key, String value) async {
-    await _prefs?.setString(key, value);
+  Future<bool> setString(String key, String value) async {
+   return await _prefs?.setString(key, value) ?? false;
   }
 
   String? getString(String key) => _prefs?.getString(key);

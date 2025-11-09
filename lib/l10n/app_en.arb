@@ -5,5 +5,6 @@
   "assign": "Assign",
   "select_intrests": "Select your intrests",
   "help_us_intrests" : "Help us know you better — choose at least 2 interests.",
-  "continue_text" : "Continue"
+  "continue_text" : "Continue",
+  "saving" : "Saving..."
   }

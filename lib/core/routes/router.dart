@@ -19,7 +19,7 @@ class AppRouter {
     initialLocation: SplashScreen.routeName,
     routes: [
       GoRoute(path: SplashScreen.routeName, builder: (context, state) => const SplashScreen()),
-      GoRoute(path: InterestScreen.routeName, builder: (context, state) => const InterestScreen()),
+      GoRoute(path: InterestScreen.routeName, builder: (context, state) => InterestScreen()),
       GoRoute(path: SavedExperiencesScreen.routeName, builder: (context, state) => const SavedExperiencesScreen()),
       GoRoute(path: ExperienceScreen.routeName, builder: (context, state) => const ExperienceScreen()),
       GoRoute(

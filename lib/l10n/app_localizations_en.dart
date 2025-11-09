@@ -25,4 +25,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continue_text => 'Continue';
+
+  @override
+  String get saving => 'Saving...';
 }

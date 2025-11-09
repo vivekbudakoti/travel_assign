@@ -8,7 +8,17 @@ class InterstLoadingState extends InterestState {}
 
 class InterestSuccessState extends InterestState {
   final List<InterestsModel> data;
-  InterestSuccessState({required this.data});
+  final List<String> selectedInterests;
+
+  InterestSuccessState({required this.data, List<String>? selectedInterests})
+    : selectedInterests = selectedInterests ?? [];
+
+  InterestSuccessState copyWith({List<InterestsModel>? data, List<String>? selectedInterests}) {
+    return InterestSuccessState(
+      data: data ?? this.data,
+      selectedInterests: selectedInterests ?? this.selectedInterests,
+    );
+  }
 }
 
 class InterstFailureState extends InterestState {}

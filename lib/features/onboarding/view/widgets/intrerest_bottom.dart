@@ -4,7 +4,10 @@ import 'package:travel_assign/core/widgets/button.dart';
 
 class IntrerestBottom extends StatelessWidget {
   final VoidCallback onContinue;
-  const IntrerestBottom({super.key, required this.onContinue});
+  final bool isDisabled;
+  final String lable ;
+
+  const IntrerestBottom({super.key, required this.onContinue, this.isDisabled = false, required this.lable});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,12 @@ class IntrerestBottom extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           16.verticalSizedBox,
-          AppButton(text: context.l10n.continue_text, onPressed: onContinue, width: double.maxFinite),
+          AppButton(
+            text: lable,
+            onPressed: onContinue,
+            width: double.maxFinite,
+            isDisabled: isDisabled,
+          ),
         ],
       ),
     );

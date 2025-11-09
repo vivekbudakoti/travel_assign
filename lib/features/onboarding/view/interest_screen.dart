@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/features/experience/view/experience_screen.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/features/onboarding/view/widgets/interest_loading.dart';
@@ -12,10 +11,10 @@ import 'package:travel_assign/features/onboarding/view/widgets/intrerest_bottom.
 import 'package:travel_assign/features/onboarding/view/widgets/intrerest_card.dart';
 
 class InterestScreen extends StatelessWidget {
-  const InterestScreen({super.key});
+  InterestScreen({super.key});
 
   static final routeName = AppRoutes.interestScreen;
-
+  bool _isSaving = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,7 +27,21 @@ class InterestScreen extends StatelessWidget {
               return Scaffold(
                 bottomSheet: Padding(
                   padding: EdgeInsets.only(bottom: context.viewPadding.bottom),
-                  child: IntrerestBottom(onContinue: () => context.pushReplacement(ExperienceScreen.routeName)),
+                  child: StatefulBuilder(
+                    builder: (context, setState) {
+                      return IntrerestBottom(
+                        onContinue: () async {
+                          _isSaving = true;
+                          setState(() {});
+                          await context.read<InterestCubit>().onTapContinue();
+                          _isSaving = false;
+                          setState(() {});
+                        },
+                        lable: _isSaving ? context.l10n.saving : context.l10n.continue_text,
+                        isDisabled: _isSaving || state.selectedInterests.length < 2,
+                      );
+                    },
+                  ),
                 ),
                 body: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -56,7 +69,15 @@ class InterestScreen extends StatelessWidget {
                           itemCount: interestsData.length,
                           itemBuilder: (context, index) {
                             final data = interestsData[index];
-                            return IntrerestCard(title: data.title ?? "", imageUrl: data.imageUrl ?? "");
+                            return IntrerestCard(
+                              title: data.title ?? "",
+                              imageUrl: data.imageUrl ?? "",
+                              isSelected: data.isSelected,
+                              onTap: () {
+                                data.isSelected = !data.isSelected;
+                                context.read<InterestCubit>().updateInterests(data);
+                              },
+                            );
                           },
                         ),
                       ),
@@ -64,8 +85,7 @@ class InterestScreen extends StatelessWidget {
                   ),
                 ),
               );
-            // TODO: Handle this case.
-            //
+
             default:
               return InterestLoading();
           }
