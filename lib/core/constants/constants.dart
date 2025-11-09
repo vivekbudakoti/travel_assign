@@ -9,3 +9,5 @@ class AppRoutes {
   static const String experienceDetailScreen = '/experienceDetailScreen';
   static const String savedExperiencesScreen = '/savedExperiencesScreen';
 }
+
+

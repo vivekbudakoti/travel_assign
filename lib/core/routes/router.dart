@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/features/experience/view/experience_detail_screen.dart';
 import 'package:travel_assign/features/experience/view/experience_screen.dart';
-import 'package:travel_assign/features/experience/view/saved_experiences_screen.dart';
+import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
 import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
 import 'package:travel_assign/features/onboarding/view/splash_screen.dart';
 

@@ -3,9 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/core/widgets/app_carousel.dart';
-import 'package:travel_assign/core/widgets/auto_scroll_carousel.dart';
-import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/features/experience/view/widgets/circular_heart.dart';
 import 'package:travel_assign/features/experience/view/widgets/interest_option.dart';
 import 'package:travel_assign/features/experience/view/widgets/location_chip.dart';
@@ -39,8 +36,7 @@ class _ExperienceDetailScreenState extends State<ExperienceDetailScreen> {
           children: [
             Stack(
               children: [
-                // AutoScrollCarouselView(imageUrls: imageUrls, height: heightBgImage),
-                AppCarousel(imageUrls: imageUrls, height: heightBgImage),
+                // AppCarousel(imageUrls: imageUrls, height: heightBgImage),
                 // Hero(
                 //   tag: "my-hero",
                 //   flightShuttleBuilder: (context, animation, direction, from, to) {

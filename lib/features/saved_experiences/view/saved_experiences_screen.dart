@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/features/experience/view/widgets/transluent_circle_avatar.dart';
 
 class SavedExperiencesScreen extends StatefulWidget {
   const SavedExperiencesScreen({super.key});
