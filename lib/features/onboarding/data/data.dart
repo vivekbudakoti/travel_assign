@@ -28,12 +28,14 @@ class InterestLocalData extends InterestData {
     final selected = <Map<String, dynamic>>[];
     final unselected = <Map<String, dynamic>>[];
 
+    intrestsJson.forEach((key, value) {
       final isSelected = savedJson[key] != null;
       value['is_selected'] = isSelected;
       (isSelected ? selected : unselected).add(value);
     });
 
     final combined = [...selected, ...unselected];
+
     return InterestsModel.listFromJson(combined);
   }
 
