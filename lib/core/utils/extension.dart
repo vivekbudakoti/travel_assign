@@ -24,5 +24,5 @@ extension SizedBoxExtension on num {
 
 extension MediQueryExtension on BuildContext {
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
+  double get height => MediaQuery.of(this).size.height;
 }
-

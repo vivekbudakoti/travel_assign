@@ -6,4 +6,5 @@ class AppRoutes {
   static const String splashScreen = '/splashScreen';
   static const String interestScreen = '/interestScreen';
   static const String experienceScreen = '/experienceScreen';
+  static const String experienceDetailScreen = '/experienceDetailScreen';
 }
