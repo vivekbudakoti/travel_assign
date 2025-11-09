@@ -3,13 +3,15 @@ import 'package:travel_assign/core/utils/extension.dart';
 
 class LocationChip extends StatelessWidget {
   final String location;
-  const LocationChip({super.key, required this.location});
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
+  const LocationChip({super.key, required this.location, this.margin, this.padding});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 12, left: 12),
-      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      margin: margin ?? EdgeInsets.only(top: 12, left: 12),
+      padding: padding ?? EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       decoration: BoxDecoration(
         color: context.colorScheme.primary.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(16),
