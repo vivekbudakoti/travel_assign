@@ -43,6 +43,7 @@ class AppTheme {
         bodySmall: AppTextStyles.bodySmall.copyWith(color: textColor),
         titleLarge: AppTextStyles.titleLarge.copyWith(color: textColor),
         labelLarge: AppTextStyles.label.copyWith(color: textColor),
+        labelSmall: AppTextStyles.labelSmall.copyWith(color: textColor),
       ),
     );
   }

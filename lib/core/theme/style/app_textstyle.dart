@@ -41,6 +41,12 @@ class AppTextStyles {
     color: AppColors.primaryTextLight,
   );
 
+  static const TextStyle labelSmall = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryTextLight,
+  );
+
   //Title
   static const TextStyle titleLarge = TextStyle(
     fontSize: 18,
