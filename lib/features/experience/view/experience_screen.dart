@@ -72,32 +72,38 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                 ),
                 40.verticalSizedBox,
                 BlocProvider(
-                  create: (_) => InterestCubit(),
+                  create: (_) => InterestCubit()..getUserInterests(),
                   child: SizedBox(
                     height: 80,
-                    child: BlocConsumer<InterestCubit,InterestState>(
+                    child: BlocConsumer<InterestCubit, InterestState>(
                       listener: (context, state) {
-                        if(state is InterestSuccessState){
-                         expereinceBloc.getExperiences();
+                        if (state is InterestSuccessState) {
+                          expereinceBloc.getExperiences();
                         }
                       },
-                      builder: (context,state) {
-                        return ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          itemBuilder: (context, index) {
-                            return InterestOption(
-                              imageUrl: "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
-                              isSelected: (index < 3) ? true : false,
-                              title: "Adventure",
-                              onTap: () {
-                                 expereinceBloc.getExperiences();
+                      builder: (context, state) {
+                        switch (state) {
+                          case InterestSuccessState():
+                            return ListView.separated(
+                              scrollDirection: Axis.horizontal,
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              itemBuilder: (context, index) {
+                                final data = state.data[index];
+                                return InterestOption(
+                                  imageUrl: data.imageUrl ?? "",
+                                  isSelected: data.isSelected,
+                                  title: data.title ?? "",
+                                  onTap: () {
+                                    expereinceBloc.getExperiences();
+                                  },
+                                );
                               },
+                              separatorBuilder: (context, index) => 10.horizontalSizedBox,
+                              itemCount: 8,
                             );
-                          },
-                          separatorBuilder: (context, index) => 10.horizontalSizedBox,
-                          itemCount: 8,
-                        );
+                          default:
+                            return Text("loading");
+                        }
                       },
                     ),
                   ),

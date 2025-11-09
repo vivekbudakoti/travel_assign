@@ -7,6 +7,7 @@ import 'package:travel_assign/features/onboarding/model/interests_model.dart';
 
 abstract class InterestData {
   Future<List<InterestsModel>> getInterests();
+  Future<List<InterestsModel>> getUserInterests();
   Future<bool> saveInterests({required List<String> ids});
 }
 
@@ -15,6 +16,25 @@ class InterestLocalData extends InterestData {
   Future<List<InterestsModel>> getInterests() async {
     await Future.delayed(Duration(milliseconds: 600));
     return Future.value(InterestsModel.listFromJson(intrestsJson.entries.map((e) => e.value).toList()));
+  }
+
+  @override
+  Future<List<InterestsModel>> getUserInterests() async {
+    await Future.delayed(const Duration(milliseconds: 600));
+
+    final localData = SharedPrefUtil().getString(SharedPreferencesConstants.savedInterest);
+    final savedJson = jsonDecode(localData ?? '{}');
+
+    final selected = <Map<String, dynamic>>[];
+    final unselected = <Map<String, dynamic>>[];
+
+      final isSelected = savedJson[key] != null;
+      value['is_selected'] = isSelected;
+      (isSelected ? selected : unselected).add(value);
+    });
+
+    final combined = [...selected, ...unselected];
+    return InterestsModel.listFromJson(combined);
   }
 
   @override

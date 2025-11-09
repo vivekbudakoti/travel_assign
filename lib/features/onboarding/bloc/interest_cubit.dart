@@ -6,15 +6,23 @@ import 'package:travel_assign/features/onboarding/model/interests_model.dart';
 import 'package:travel_assign/features/onboarding/repository/repo.dart';
 
 class InterestCubit extends Cubit<InterestState> {
-  InterestCubit() : super(InterstInitalState()) {
-    getInterests();
-  }
+  InterestCubit() : super(InterstInitalState()) ;
 
   Future<void> getInterests() async {
     emit(InterstLoadingState());
     try {
       final data = await InterestRepo().getInterests();
       emit(InterestSuccessState(data: data));
+    } catch (e) {
+      emit(InterstFailureState());
+    }
+  }
+
+  Future<void> getUserInterests() async {
+    emit(InterstLoadingState());
+    try {
+      final userData = await InterestRepo().getUserInterests();
+      emit(InterestSuccessState(data: userData));
     } catch (e) {
       emit(InterstFailureState());
     }

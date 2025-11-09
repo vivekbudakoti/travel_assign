@@ -18,7 +18,7 @@ class InterestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => InterestCubit(),
+      create: (_) => InterestCubit()..getInterests(),
       child: BlocBuilder<InterestCubit, InterestState>(
         builder: (context, state) {
           switch (state) {

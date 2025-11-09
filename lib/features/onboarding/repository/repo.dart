@@ -11,4 +11,8 @@ class InterestRepo {
   Future<bool> saveInterests({required List<String> ids}) async {
     return await dataSource.saveInterests(ids: ids);
   }
+
+  Future<List<InterestsModel>> getUserInterests() async {
+    return await dataSource.getUserInterests();
+  }
 }
