@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/features/experience/view/experience_detail_screen.dart';
 import 'package:travel_assign/features/experience/view/experience_screen.dart';
+import 'package:travel_assign/features/experience/view/saved_experiences_screen.dart';
 import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
 import 'package:travel_assign/features/onboarding/view/splash_screen.dart';
 
@@ -19,6 +20,7 @@ class AppRouter {
     routes: [
       GoRoute(path: SplashScreen.routeName, builder: (context, state) => const SplashScreen()),
       GoRoute(path: InterestScreen.routeName, builder: (context, state) => const InterestScreen()),
+      GoRoute(path: SavedExperiencesScreen.routeName, builder: (context, state) => const SavedExperiencesScreen()),
       GoRoute(path: ExperienceScreen.routeName, builder: (context, state) => const ExperienceScreen()),
       GoRoute(
         path: ExperienceDetailScreen.routeName,

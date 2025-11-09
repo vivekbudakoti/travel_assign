@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
+import 'package:travel_assign/core/widgets/app_carousel.dart';
 import 'package:travel_assign/core/widgets/auto_scroll_carousel.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/features/experience/view/widgets/circular_heart.dart';
@@ -39,29 +40,30 @@ class _ExperienceDetailScreenState extends State<ExperienceDetailScreen> {
             Stack(
               children: [
                 // AutoScrollCarouselView(imageUrls: imageUrls, height: heightBgImage),
-                Hero(
-                  tag: "my-hero",
-                  flightShuttleBuilder: (context, animation, direction, from, to) {
-                    return FadeTransition(
-                      opacity: animation.drive(Tween(begin: 0.8, end: 1.0)),
-                      child: ScaleTransition(
-                        scale: animation.drive(
-                          Tween(begin: 0.98, end: 1.0).chain(CurveTween(curve: Curves.easeOutCubic)),
-                        ),
-                        child: to.widget,
-                      ),
-                    );
-                  },
-                  child: SizedBox(
-                    height: heightBgImage,
-                    width: double.infinity,
-                    child: AppNetworkImage(
-                      imageUrl:
-                          "https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                AppCarousel(imageUrls: imageUrls, height: heightBgImage),
+                // Hero(
+                //   tag: "my-hero",
+                //   flightShuttleBuilder: (context, animation, direction, from, to) {
+                //     return FadeTransition(
+                //       opacity: animation.drive(Tween(begin: 0.8, end: 1.0)),
+                //       child: ScaleTransition(
+                //         scale: animation.drive(
+                //           Tween(begin: 0.98, end: 1.0).chain(CurveTween(curve: Curves.easeOutCubic)),
+                //         ),
+                //         child: to.widget,
+                //       ),
+                //     );
+                //   },
+                //   child: SizedBox(
+                //     height: heightBgImage,
+                //     width: double.infinity,
+                //     child: AppNetworkImage(
+                //       imageUrl:
+                //           "https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900",
+                //       fit: BoxFit.cover,
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: EdgeInsets.only(top: context.viewPadding.top + 12, left: 16, right: 16),
                   child: Row(

@@ -7,6 +7,7 @@ import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
 import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
 import 'package:travel_assign/features/experience/view/experience_detail_screen.dart';
+import 'package:travel_assign/features/experience/view/saved_experiences_screen.dart';
 import 'package:travel_assign/features/experience/view/widgets/experience_card.dart';
 import 'package:travel_assign/features/experience/view/widgets/interest_option.dart';
 import 'package:travel_assign/features/experience/view/widgets/top_icon.dart';
@@ -51,7 +52,12 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                 ),
                 12.horizontalSizedBox,
 
-                TopIcon(icon: Icons.favorite_outline_rounded, onTap: () {}),
+                TopIcon(
+                  icon: Icons.favorite_outline_rounded,
+                  onTap: () {
+                    context.push(SavedExperiencesScreen.routeName);
+                  },
+                ),
               ],
             ),
           ),
