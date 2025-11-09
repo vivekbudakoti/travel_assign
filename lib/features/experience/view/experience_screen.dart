@@ -64,7 +64,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                   children: [
                     AppNetworkImage(
                       imageUrl:
-                          "https://images.unsplash.com/photo-1490782300182-697b80ad4293?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q2hpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
+                          "https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RHViYWl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
                       height: 250,
                       fit: BoxFit.cover,
                     ),

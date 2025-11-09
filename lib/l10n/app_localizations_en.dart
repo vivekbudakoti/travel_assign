@@ -18,11 +18,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get assign => 'Assign';
 
   @override
-  String get welcomeText => 'Welcome to Travel Assign!';
+  String get select_intrests => 'Select your intrests';
 
   @override
-  String get explore => 'Explore Now';
+  String get help_us_intrests => 'Help us know you better — choose at least 2 interests.';
 
   @override
-  String get discover => 'Discover Destinations';
+  String get continue_text => 'Continue';
 }

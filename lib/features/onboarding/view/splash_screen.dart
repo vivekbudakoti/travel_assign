@@ -5,6 +5,7 @@ import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
 import 'package:travel_assign/features/experience/view/experience_screen.dart';
+import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToNextScreen() async {
     await Future.delayed(Duration(seconds: 2), () {
-      AppRouter.router.push(ExperienceScreen.routeName);
+      AppRouter.router.push(InterestScreen.routeName);
     });
   }
 

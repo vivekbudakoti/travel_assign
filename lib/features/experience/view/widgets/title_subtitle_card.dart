@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/features/experience/view/widgets/translucent_card.dart';
+import 'package:travel_assign/core/widgets/translucent_card.dart';
 
 class TitleSubtitleCard extends StatelessWidget {
   final String title;

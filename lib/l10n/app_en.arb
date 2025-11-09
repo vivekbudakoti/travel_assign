@@ -3,7 +3,7 @@
   "appTitle": "Travel Assign",
   "travel": "Travel",
   "assign": "Assign",
-  "welcomeText": "Welcome to Travel Assign!",
-  "explore": "Explore Now",
-  "discover": "Discover Destinations"
-}
+  "select_intrests": "Select your intrests",
+  "help_us_intrests" : "Help us know you better — choose at least 2 interests.",
+  "continue_text" : "Continue"
+  }

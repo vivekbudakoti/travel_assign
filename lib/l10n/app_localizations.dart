@@ -111,23 +111,23 @@ abstract class AppLocalizations {
   /// **'Assign'**
   String get assign;
 
-  /// No description provided for @welcomeText.
+  /// No description provided for @select_intrests.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Travel Assign!'**
-  String get welcomeText;
+  /// **'Select your intrests'**
+  String get select_intrests;
 
-  /// No description provided for @explore.
+  /// No description provided for @help_us_intrests.
   ///
   /// In en, this message translates to:
-  /// **'Explore Now'**
-  String get explore;
+  /// **'Help us know you better — choose at least 2 interests.'**
+  String get help_us_intrests;
 
-  /// No description provided for @discover.
+  /// No description provided for @continue_text.
   ///
   /// In en, this message translates to:
-  /// **'Discover Destinations'**
-  String get discover;
+  /// **'Continue'**
+  String get continue_text;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

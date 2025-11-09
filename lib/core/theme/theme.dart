@@ -25,11 +25,13 @@ class AppTheme {
     return ThemeData(
       brightness: brightness,
       scaffoldBackgroundColor: backgroundColor,
+      bottomSheetTheme: BottomSheetThemeData(backgroundColor: isDark ? AppColors.primaryDark : AppColors.primaryLight),
       colorScheme: ColorScheme.fromSeed(
         seedColor: isDark ? AppColors.primaryDark : AppColors.primaryLight,
         brightness: brightness,
         surface: isDark ? AppColors.primaryLight : AppColors.white,
         primary: isDark ? AppColors.primaryDark : AppColors.primaryLight,
+        primaryContainer: isDark ? AppColors.secondary : AppColors.primaryDark,
         inversePrimary: isDark ? AppColors.primaryLight : AppColors.primaryDark,
         onTertiary: isDark ? AppColors.white : AppColors.primaryDark,
       ),
