@@ -8,7 +8,7 @@ abstract class InterestData {
 class InterestLocalData extends InterestData {
   @override
   Future<List<InterestsModel>> getInterests() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(milliseconds: 600));
     return Future.value(InterestsModel.listFromJson(intrestsJson));
   }
 }

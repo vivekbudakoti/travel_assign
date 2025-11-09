@@ -5,7 +5,12 @@ final intrestsJson = [
     "image_url": "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
   },
   {"id": 2, "title": "Beaches", "image_url": "https://cdn.pixabay.com/photo/2015/12/27/21/11/beach-1110498_1280.jpg"},
-  {"id": 3, "title": "Nature", "image_url": "https://cdn.pixabay.com/photo/2022/12/12/03/13/branch-7650059_1280.jpg"},
+  {
+    "id": 3,
+    "title": "Nature",
+    "image_url":
+        "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+  },
   {"id": 4, "title": "City Life", "image_url": "https://cdn.pixabay.com/photo/2021/08/17/10/32/city-6552638_1280.jpg"},
   {
     "id": 5,

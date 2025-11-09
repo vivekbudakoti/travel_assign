@@ -16,5 +16,4 @@ class InterestCubit extends Cubit<InterestState> {
       emit(InterstFailureState());
     }
   }
-  
 }

@@ -7,6 +7,7 @@ import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/features/experience/view/experience_screen.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
+import 'package:travel_assign/features/onboarding/view/widgets/interest_loading.dart';
 import 'package:travel_assign/features/onboarding/view/widgets/intrerest_bottom.dart';
 import 'package:travel_assign/features/onboarding/view/widgets/intrerest_card.dart';
 
@@ -23,6 +24,7 @@ class InterestScreen extends StatelessWidget {
         builder: (context, state) {
           switch (state) {
             case InterestSuccessState():
+              final interestsData = state.data;
               return Scaffold(
                 bottomSheet: Padding(
                   padding: EdgeInsets.only(bottom: context.viewPadding.bottom),
@@ -51,13 +53,10 @@ class InterestScreen extends StatelessWidget {
                             mainAxisSpacing: 10,
                             childAspectRatio: 1,
                           ),
-                          itemCount: 10,
+                          itemCount: interestsData.length,
                           itemBuilder: (context, index) {
-                            return IntrerestCard(
-                              title: "Mountains",
-                              imageUrl:
-                                  "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
-                            );
+                            final data = interestsData[index];
+                            return IntrerestCard(title: data.title ?? "", imageUrl: data.imageUrl ?? "");
                           },
                         ),
                       ),
@@ -68,7 +67,7 @@ class InterestScreen extends StatelessWidget {
             // TODO: Handle this case.
             //
             default:
-              return CircularProgressIndicator();
+              return InterestLoading();
           }
         },
       ),
