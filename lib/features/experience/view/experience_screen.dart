@@ -5,6 +5,7 @@ import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
+import 'package:travel_assign/core/widgets/shimmer_container.dart';
 import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_state.dart';
@@ -36,80 +37,101 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
           return Scaffold(
             body: Column(
               children: [
-                context.viewPadding.top.verticalSizedBox,
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    children: [
-                      Row(
+                Column(
+                  children: [
+                    context.viewPadding.top.verticalSizedBox,
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
                         children: [
-                          AppAssetImage(imagePath: Assets.icons.appLogo, height: 25, width: 25),
-                          6.horizontalSizedBox,
-                          AppName(isLarge: false),
+                          Row(
+                            children: [
+                              AppAssetImage(imagePath: Assets.icons.appLogo, height: 25, width: 25),
+                              6.horizontalSizedBox,
+                              AppName(isLarge: false),
+                            ],
+                          ),
+                          Spacer(),
+                          BlocBuilder<ThemeCubit, ThemeState>(
+                            builder: (context, state) {
+                              return TopIcon(
+                                icon: state is LightThemeState ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
+                                onTap: () {
+                                  context.read<ThemeCubit>().toggleTheme();
+                                },
+                              );
+                            },
+                          ),
+                          12.horizontalSizedBox,
+
+                          TopIcon(
+                            icon: Icons.favorite_outline_rounded,
+                            onTap: () {
+                              context.push(SavedExperiencesScreen.routeName);
+                            },
+                          ),
                         ],
                       ),
-                      Spacer(),
-                      BlocBuilder<ThemeCubit, ThemeState>(
-                        builder: (context, state) {
-                          return TopIcon(
-                            icon: state is LightThemeState ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
-                            onTap: () {
-                              context.read<ThemeCubit>().toggleTheme();
-                            },
-                          );
-                        },
-                      ),
-                      12.horizontalSizedBox,
-
-                      TopIcon(
-                        icon: Icons.favorite_outline_rounded,
-                        onTap: () {
-                          context.push(SavedExperiencesScreen.routeName);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                40.verticalSizedBox,
-                BlocProvider(
-                  create: (_) => InterestCubit()..getUserInterests(),
-                  child: SizedBox(
-                    height: 80,
-                    child: BlocConsumer<InterestCubit, InterestState>(
-                      listener: (context, state) {
-                        if (state is InterestSuccessState) {
-                          expereinceBloc.getExperiences();
-                        }
-                      },
-                      builder: (context, state) {
-                        switch (state) {
-                          case InterestSuccessState():
-                            return ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              padding: EdgeInsets.symmetric(horizontal: 16),
-                              itemBuilder: (context, index) {
-                                final data = state.data[index];
-                                return InterestOption(
-                                  imageUrl: data.imageUrl ?? "",
-                                  isSelected: data.isSelected,
-                                  title: data.title ?? "",
-                                  onTap: () {
-                                    expereinceBloc.getExperiences();
+                    ),
+                    40.verticalSizedBox,
+                    BlocProvider(
+                      create: (_) => InterestCubit()..getUserInterests(),
+                      child: SizedBox(
+                        height: 80,
+                        child: BlocConsumer<InterestCubit, InterestState>(
+                          listener: (context, state) {
+                            if (state is InterestSuccessState) {
+                              expereinceBloc.getExperiences();
+                            }
+                          },
+                          builder: (context, state) {
+                            switch (state) {
+                              case InterestSuccessState():
+                                return ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: EdgeInsets.symmetric(horizontal: 16),
+                                  itemBuilder: (context, index) {
+                                    final data = state.data[index];
+                                    return InterestOption(
+                                      imageUrl: data.imageUrl ?? "",
+                                      isSelected: data.isSelected,
+                                      title: data.title ?? "",
+                                      onTap: () {
+                                        expereinceBloc.getExperiences();
+                                      },
+                                    );
                                   },
+                                  separatorBuilder: (context, index) => 10.horizontalSizedBox,
+                                  itemCount: 8,
                                 );
-                              },
-                              separatorBuilder: (context, index) => 10.horizontalSizedBox,
-                              itemCount: 8,
-                            );
-                          default:
-                            return Text("loading");
-                        }
+                              default:
+                                return Text("loading");
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    20.verticalSizedBox,
+                  ],
+                ),
+                if (state is ExperienceSuccessState)
+                  Expanded(
+                    child: GridView.builder(
+                      padding: EdgeInsets.only(left: 16, right: 16),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 16 / 9,
+                      ),
+                      itemCount: state.experienceData.length,
+                      itemBuilder: (context, index) {
+                        final data = state.experienceData[index];
+                        return ExperienceCard(data: data, onTap: () => context.push(ExperienceDetailScreen.routeName));
                       },
                     ),
                   ),
-                ),
-                20.verticalSizedBox,
-                ExperienceCard(onTap: () => context.push(ExperienceDetailScreen.routeName)),
+                if (state is ExperienceLoadingState) ShimmerContainer(height: 200, width: double.maxFinite),
               ],
             ),
           );

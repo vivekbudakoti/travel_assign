@@ -2,13 +2,15 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
+import 'package:travel_assign/features/experience/model/experience_data_model.dart';
 import 'package:travel_assign/features/experience/view/widgets/circular_heart.dart';
 import 'package:travel_assign/features/experience/view/widgets/experience_card_footer.dart';
 import 'package:travel_assign/features/experience/view/widgets/location_chip.dart';
 
 class ExperienceCard extends StatelessWidget {
   final VoidCallback onTap;
-  const ExperienceCard({super.key, required this.onTap});
+  final ExperienceDataModel data;
+  const ExperienceCard({super.key, required this.onTap, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +25,15 @@ class ExperienceCard extends StatelessWidget {
             children: [
               Hero(
                 tag: "my-hero",
-                child: AppNetworkImage(
-                  imageUrl:
-                      "https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RHViYWl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
-                  height: 250,
-                  fit: BoxFit.cover,
-                ),
+                child: AppNetworkImage(imageUrl: data.thumbnail ?? "", height: 250, fit: BoxFit.cover),
               ),
-              LocationChip(location: "Morocco"),
+              LocationChip(location: data.location ?? ""),
               Align(
                 alignment: AlignmentGeometry.bottomCenter,
                 child: ExperienceCardFooter(
-                  topTileTitle: "Adventure, Nature",
-                  bottomTileTitle: "Sahara Desert Safari",
-                  bottomTileSubText:
-                      "The Sahara is endless beauty and silence rolled into one. Journey across the dunes of Merzouga on camelback as the sun paints the sand in shades of gold and red. Spend nights in Berber tents under skies filled with constellations. The desert’s stillness, warmth, and vastness connect you to something eternal. It’s a place where time slows and nature speaks softly.",
+                  topTileTitle: "",
+                  bottomTileTitle: data.title ?? "",
+                  bottomTileSubText: data.shortDescription ?? "",
                 ),
               ),
               Align(
