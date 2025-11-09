@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/constants/raw_json.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
@@ -18,8 +17,9 @@ class SavedExperiencesLocalData extends SavedExperiencesData {
       final pref = SharedPrefUtil();
       final savedData = pref.getString(SharedPreferencesConstants.savedExperiences);
       final savedJson = jsonDecode(savedData ?? '{}');
-      experienceRawData[id]?['is_saved'] = true;
-      savedJson[id] = experienceRawData[id];
+      final Map<String, dynamic> experience = Map.from(experienceRawData[id] ?? {});
+      experience['is_saved'] = true;
+      savedJson[id] = experience;
       return await pref.setString(SharedPreferencesConstants.savedExperiences, jsonEncode(savedJson));
     }
     return false;
