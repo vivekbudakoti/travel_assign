@@ -10,6 +10,7 @@ class ExperienceDataModel {
   final String? fullDescription;
   final String? thumbnail;
   final List<String>? imageUrls;
+  bool isSaved;
   final List<InterestsModel>? interests;
 
   ExperienceDataModel({
@@ -22,6 +23,7 @@ class ExperienceDataModel {
     this.thumbnail,
     this.imageUrls,
     this.interests,
+    this.isSaved = false,
   });
 
   /// Safe parser that converts raw map data into ExperienceDataModel
@@ -37,6 +39,7 @@ class ExperienceDataModel {
       fullDescription: parseString(map['full_description']),
       thumbnail: parseString(map['thumbnail']),
       imageUrls: parseStringList(map['image_urls']),
+      isSaved: parseBool(map['is_saved']),
       interests: InterestsModel.listFromJson(map['interests']),
     );
   }
@@ -51,6 +54,7 @@ class ExperienceDataModel {
       'full_description': fullDescription,
       'thumbnail': thumbnail,
       'image_urls': imageUrls,
+      'is_saved': isSaved,
       'interests': interests?.map((e) => e.toJson()).toList(),
     };
   }

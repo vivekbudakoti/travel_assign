@@ -66,7 +66,9 @@ class _ExperienceDetailScreenState extends State<ExperienceDetailScreen> {
                     children: [
                       TransluentCircleAvatar(child: Icon(Icons.arrow_back), onTap: () => context.pop()),
                       Spacer(),
-                      CircularHeart(),
+                      CircularHeart(id: "",onToggle: (isSaved) {
+                        
+                      },),
                     ],
                   ),
                 ),

@@ -1,7 +1,7 @@
 class SharedPreferencesConstants {
   static const String isDarkTheme = 'is_dark_theme';
   static const String savedInterest = 'saved_interest';
-
+  static const String savedExperiences = 'saved_experiences';
 }
 
 class AppRoutes {
@@ -11,5 +11,3 @@ class AppRoutes {
   static const String experienceDetailScreen = '/experienceDetailScreen';
   static const String savedExperiencesScreen = '/savedExperiencesScreen';
 }
-
-

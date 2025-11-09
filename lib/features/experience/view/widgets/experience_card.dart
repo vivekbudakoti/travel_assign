@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/features/experience/model/experience_data_model.dart';
@@ -24,7 +22,7 @@ class ExperienceCard extends StatelessWidget {
           child: Stack(
             children: [
               Hero(
-                tag: "my-hero",
+                tag: data.id ?? "",
                 child: AppNetworkImage(imageUrl: data.thumbnail ?? "", height: 250, fit: BoxFit.cover),
               ),
               LocationChip(location: data.location ?? ""),
@@ -38,7 +36,9 @@ class ExperienceCard extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: CircularHeart(isFilled: true, onTap: () {}),
+                child: CircularHeart(isSelected: data.isSaved,id: data.id ?? "",onToggle: (isSaved) {
+                  data.isSaved = isSaved;
+                },),
               ),
             ],
           ),
