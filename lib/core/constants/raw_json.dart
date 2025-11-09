@@ -61,7 +61,18 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "https://images.unsplash.com/photo-1514970746-d4a465d514d0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fFN3aXR6ZXJsYW5kfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
       "https://images.unsplash.com/photo-1528493366314-e317cd98dd52?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U3dpdHplcmxhbmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Mountains", "Adventure"],
+    "interests": {
+      "1": {
+        "id": 1,
+        "title": "Mountains",
+        "image_url": "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
+      },
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+    },
   },
   "2": {
     "id": "2",
@@ -81,7 +92,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1596933144889-c15043a9ddde?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFNhbnRvcmluaXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://plus.unsplash.com/premium_photo-1661962663771-e096c9ffccbb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fFNhbnRvcmluaXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Beaches", "Nature"],
+    "interests": {
+      "2": {
+        "id": 2,
+        "title": "Beaches",
+        "image_url": "https://cdn.pixabay.com/photo/2015/12/27/21/11/beach-1110498_1280.jpg",
+      },
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+    },
   },
   "3": {
     "id": "3",
@@ -100,7 +123,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "https://plus.unsplash.com/premium_photo-1723983555279-8de1f6e633e3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8S3lvdG98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "https://images.unsplash.com/photo-1558870832-c8db4b5b47d1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fEt5b3RvfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Spiritual", "Culture"],
+    "interests": {
+      "6": {
+        "id": 6,
+        "title": "Spiritual",
+        "image_url": "https://cdn.pixabay.com/photo/2024/04/19/22/25/man-8707406_1280.png",
+      },
+      "5": {
+        "id": 5,
+        "title": "Culture",
+        "image_url":
+            "https://plus.unsplash.com/premium_vector-1726857784933-5e1f37459ec4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+    },
   },
   "4": {
     "id": "4",
@@ -119,7 +154,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UGFyaXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "https://images.unsplash.com/photo-1551634979-2b11f8c946fe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fFBhcmlzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["City Life", "Culture"],
+    "interests": {
+      "4": {
+        "id": 4,
+        "title": "City Life",
+        "image_url": "https://cdn.pixabay.com/photo/2021/08/17/10/32/city-6552638_1280.jpg",
+      },
+      "5": {
+        "id": 5,
+        "title": "Culture",
+        "image_url":
+            "https://plus.unsplash.com/premium_vector-1726857784933-5e1f37459ec4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+    },
   },
   "5": {
     "id": "5",
@@ -138,7 +185,23 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "https://images.unsplash.com/photo-1546484475-7f7bd55792da?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fEJhbGl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "https://images.unsplash.com/photo-1557093793-d149a38a1be8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEJhbGl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Adventure", "Beaches", "Spiritual"],
+    "interests": {
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+      "2": {
+        "id": 2,
+        "title": "Beaches",
+        "image_url": "https://cdn.pixabay.com/photo/2015/12/27/21/11/beach-1110498_1280.jpg",
+      },
+      "6": {
+        "id": 6,
+        "title": "Spiritual",
+        "image_url": "https://cdn.pixabay.com/photo/2024/04/19/22/25/man-8707406_1280.png",
+      },
+    },
   },
   "6": {
     "id": "6",
@@ -158,7 +221,18 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1476837754190-8036496cea40?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fE5ldyUyMFlvcmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TmV3JTIwWW9ya3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["City Life", "Food"],
+    "interests": {
+      "4": {
+        "id": 4,
+        "title": "City Life",
+        "image_url": "https://cdn.pixabay.com/photo/2021/08/17/10/32/city-6552638_1280.jpg",
+      },
+      "8": {
+        "id": 8,
+        "title": "Food",
+        "image_url": "https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_1280.jpg",
+      },
+    },
   },
   "7": {
     "id": "7",
@@ -177,7 +251,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://plus.unsplash.com/premium_photo-1673415819351-45e7e9076d15?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8TW9yb2Njb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1538600838042-6a0c694ffab5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8TW9yb2Njb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Adventure", "Nature"],
+    "interests": {
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+    },
   },
   "8": {
     "id": "8",
@@ -192,11 +278,23 @@ Map<String, Map<String, dynamic>> experienceRawData = {
     "image_urls": [
       "https://images.unsplash.com/photo-1519112232436-9923c6ba3d26?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8VmVuaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
       "https://images.unsplash.com/photo-1523906921802-b5d2d899e93b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8VmVuaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
-      "https://images.unsplash.com/photo-1480548004877-593316be2bd5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fFZlbmljZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      "https::/images.unsplash.com/photo-1480548004877-593316be2bd5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fFZlbmljZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VmVuaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1553342385-111fd6bc6ab3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFZlbmljZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Culture", "City Life"],
+    "interests": {
+      "5": {
+        "id": 5,
+        "title": "Culture",
+        "image_url":
+            "https://plus.unsplash.com/premium_vector-1726857784933-5e1f37459ec4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "4": {
+        "id": 4,
+        "title": "City Life",
+        "image_url": "https://cdn.pixabay.com/photo/2021/08/17/10/32/city-6552638_1280.jpg",
+      },
+    },
   },
   "9": {
     "id": "9",
@@ -215,7 +313,24 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QXJnZW50aW5hfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1600627094717-809e6a3f29f0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEFyZ2VudGluYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Mountains", "Nature", "Adventure"],
+    "interests": {
+      "1": {
+        "id": 1,
+        "title": "Mountains",
+        "image_url": "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
+      },
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+    },
   },
   "10": {
     "id": "10",
@@ -235,7 +350,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1526697675318-89790adec369?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFBlcnV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1473455811944-fdd1b0f282f3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFBlcnV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Adventure", "Culture"],
+    "interests": {
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+      "5": {
+        "id": 5,
+        "title": "Culture",
+        "image_url":
+            "https://plus.unsplash.com/premium_vector-1726857784933-5e1f37459ec4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+    },
   },
   "11": {
     "id": "11",
@@ -255,7 +382,18 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1459787915554-b34915863013?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fER1YmFpfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1506645728556-ac574e628eca?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fER1YmFpfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["City Life", "Adventure"],
+    "interests": {
+      "4": {
+        "id": 4,
+        "title": "City Life",
+        "image_url": "https://cdn.pixabay.com/photo/2021/08/17/10/32/city-6552638_1280.jpg",
+      },
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+    },
   },
   "12": {
     "id": "12",
@@ -275,7 +413,24 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://plus.unsplash.com/premium_photo-1675436915206-48ae3c9e73a5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fENhcGUlMjBUb3dufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1621336490817-e36ae37bcde4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fENhcGUlMjBUb3dufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Beaches", "Nature", "Mountains"],
+    "interests": {
+      "2": {
+        "id": 2,
+        "title": "Beaches",
+        "image_url": "https://cdn.pixabay.com/photo/2015/12/27/21/11/beach-1110498_1280.jpg",
+      },
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "1": {
+        "id": 1,
+        "title": "Mountains",
+        "image_url": "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
+      },
+    },
   },
   "13": {
     "id": "13",
@@ -294,7 +449,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1600030808777-b063d6c20a5a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fEFsYmVydGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "httpsRows://images.unsplash.com/photo-1601704598796-d00260db4977?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8QWxiZXJ0YXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Nature", "Mountains"],
+    "interests": {
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "1": {
+        "id": 1,
+        "title": "Mountains",
+        "image_url": "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
+      },
+    },
   },
   "14": {
     "id": "14",
@@ -314,7 +481,18 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1546228139-87f5312cac42?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fEJhbmdrb2t8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1562602833-0f4ab2fc46e3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8QmFuZ2tva3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Food", "City Life"],
+    "interests": {
+      "8": {
+        "id": 8,
+        "title": "Food",
+        "image_url": "https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_1280.jpg",
+      },
+      "4": {
+        "id": 4,
+        "title": "City Life",
+        "image_url": "https://cdn.pixabay.com/photo/2021/08/17/10/32/city-6552638_1280.jpg",
+      },
+    },
   },
   "15": {
     "id": "15",
@@ -333,7 +511,19 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://images.unsplash.com/photo-1531168556467-80aace0d0144?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SWNlbGFuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1513883524931-aaab83bcb19b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fEljZWxhbmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Nature", "Adventure"],
+    "interests": {
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
+      },
+    },
   },
   "16": {
     "id": "16",
@@ -353,6 +543,24 @@ Map<String, Map<String, dynamic>> experienceRawData = {
       "httpss://plus.unsplash.com/premium_photo-1676236246841-58ce7f9004a0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fFR1c2Nhbnl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
       "httpss://images.unsplash.com/photo-1563036535-e86d8444e157?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fFR1c2Nhbnl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
-    "interests": ["Food", "Culture", "Nature"],
+    "interests": {
+      "8": {
+        "id": 8,
+        "title": "Food",
+        "image_url": "https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_1280.jpg",
+      },
+      "5": {
+        "id": 5,
+        "title": "Culture",
+        "image_url":
+            "https://plus.unsplash.com/premium_vector-1726857784933-5e1f37459ec4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+    },
   },
 };

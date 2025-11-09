@@ -18,6 +18,7 @@ class InterestCubit extends Cubit<InterestState> {
     }
   }
 
+
   Future<void> getUserInterests() async {
     emit(InterstLoadingState());
     try {

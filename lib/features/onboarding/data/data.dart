@@ -15,7 +15,7 @@ class InterestLocalData extends InterestData {
   @override
   Future<List<InterestsModel>> getInterests() async {
     await Future.delayed(Duration(milliseconds: 600));
-    return Future.value(InterestsModel.listFromJson(intrestsJson.entries.map((e) => e.value).toList()));
+    return Future.value(InterestsModel.listFromJson(intrestsJson));
   }
 
   @override
@@ -25,18 +25,17 @@ class InterestLocalData extends InterestData {
     final localData = SharedPrefUtil().getString(SharedPreferencesConstants.savedInterest);
     final savedJson = jsonDecode(localData ?? '{}');
 
-    final selected = <Map<String, dynamic>>[];
-    final unselected = <Map<String, dynamic>>[];
+    final Map<String, Map<String, dynamic>> selected = {};
+    final Map<String, Map<String, dynamic>> unselected = {};
 
     intrestsJson.forEach((key, value) {
       final isSelected = savedJson[key] != null;
       value['is_selected'] = isSelected;
-      (isSelected ? selected : unselected).add(value);
+      (isSelected ? selected : unselected).addAll({key: value});
     });
+    selected.addAll(unselected);
 
-    final combined = [...selected, ...unselected];
-
-    return InterestsModel.listFromJson(combined);
+    return InterestsModel.listFromJson(selected);
   }
 
   @override

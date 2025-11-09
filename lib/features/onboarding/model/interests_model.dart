@@ -21,7 +21,9 @@ class InterestsModel {
     return {'id': id, 'title': title, 'image_url': imageUrl, 'is_selected': isSelected};
   }
 
-  static List<InterestsModel> listFromJson(List<dynamic> jsonList) {
-    return jsonList.map((json) => InterestsModel.fromJson(json)).toList();
+  static List<InterestsModel> listFromJson(Map<String, dynamic> jsonList) {
+    List<InterestsModel> interestModel = [];
+    jsonList.forEach((key, value) => interestModel.add(InterestsModel.fromJson(value)));
+    return interestModel;
   }
 }

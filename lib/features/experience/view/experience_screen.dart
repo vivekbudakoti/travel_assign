@@ -81,7 +81,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                         child: BlocConsumer<InterestCubit, InterestState>(
                           listener: (context, state) {
                             if (state is InterestSuccessState) {
-                              expereinceBloc.getExperiences();
+                              expereinceBloc.getExperiences(interests: state.selectedInterests);
                             }
                           },
                           builder: (context, state) {
@@ -97,7 +97,9 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                       isSelected: data.isSelected,
                                       title: data.title ?? "",
                                       onTap: () {
-                                        expereinceBloc.getExperiences();
+                                        data.isSelected = !data.isSelected;
+                                        context.read<InterestCubit>().updateInterests(data);
+                                        expereinceBloc.getExperiences(interests: state.selectedInterests);
                                       },
                                     );
                                   },

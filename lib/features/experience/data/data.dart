@@ -8,15 +8,15 @@ abstract class ExperienceData {
 class ExperienceLocalData extends ExperienceData {
   @override
   Future<List<ExperienceDataModel>> getExperiences({List<String> interests = const []}) async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(milliseconds: 250));
     Map<String, Map<String, dynamic>> filteredData = {};
     if (interests.isEmpty) {
       filteredData = experienceRawData;
     } else {
       experienceRawData.forEach((key, value) {
-        if (value['interests'] is List) {
+        if (value['interests'] is Map) {
           for (int i = 0; i < interests.length; i++) {
-            if (value['interests'].contains(interests[i])) {
+            if (value['interests'].keys.contains(interests[i])) {
               filteredData[key] = value;
               break;
             }

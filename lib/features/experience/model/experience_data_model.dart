@@ -1,4 +1,5 @@
 import 'package:travel_assign/core/utils/parser.dart';
+import 'package:travel_assign/features/onboarding/model/interests_model.dart';
 
 class ExperienceDataModel {
   final String? id;
@@ -9,7 +10,7 @@ class ExperienceDataModel {
   final String? fullDescription;
   final String? thumbnail;
   final List<String>? imageUrls;
-  final List<String>? interests;
+  final List<InterestsModel>? interests;
 
   ExperienceDataModel({
     this.id,
@@ -36,7 +37,7 @@ class ExperienceDataModel {
       fullDescription: parseString(map['full_description']),
       thumbnail: parseString(map['thumbnail']),
       imageUrls: parseStringList(map['image_urls']),
-      interests: parseStringList(map['interests']),
+      interests: InterestsModel.listFromJson(map['interests']),
     );
   }
 
@@ -50,7 +51,7 @@ class ExperienceDataModel {
       'full_description': fullDescription,
       'thumbnail': thumbnail,
       'image_urls': imageUrls,
-      'interests': interests,
+      'interests': interests?.map((e) => e.toJson()).toList(),
     };
   }
 
