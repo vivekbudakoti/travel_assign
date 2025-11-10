@@ -9,13 +9,16 @@ class TopIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: CircleAvatar(
-        backgroundColor: AppColors.white,
-        radius: 16,
-        child: Icon(icon, color: AppColors.primaryDark, size: 22),
+    return Material(
+      color: AppColors.white,
+      borderRadius: BorderRadius.circular(100),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(100),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Icon(icon, color: AppColors.primaryDark, size: 22),
+        ),
       ),
     );
   }

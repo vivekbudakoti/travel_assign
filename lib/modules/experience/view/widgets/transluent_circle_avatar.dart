@@ -9,15 +9,15 @@ class TransluentCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 12, right: 12),
-        child: CircleAvatar(
-          backgroundColor: context.colorScheme.primary.withValues(alpha: .7),
-          radius: 16,
-          child: child,
+    return Padding(
+      padding: const EdgeInsets.only(top: 12, right: 12),
+      child: Material(
+        color: context.colorScheme.primary.withValues(alpha: .7),
+        borderRadius: BorderRadius.circular(100),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(100),
+          onTap: onTap,
+          child: Padding(padding: const EdgeInsets.all(8.0), child: child),
         ),
       ),
     );

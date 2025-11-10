@@ -10,6 +10,7 @@ class AppColors {
   static const Color secondaryText = Color(0xFFFF361D);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Colors.black;
+  static const Color transperent = Colors.transparent;
   static const Color graniteGray = Color(0xFF64646E);
   static final Color primaryDarkWithAlpha30 = AppColors.primaryDark.withValues(alpha: 0.3);
 }
