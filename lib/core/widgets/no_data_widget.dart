@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
+import 'package:travel_assign/core/widgets/button.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 
 class PlaceHolderStateWidget extends StatelessWidget {
   final String title;
   final String? subTitle;
   final bool isError;
+  final VoidCallback? onTap;
 
-  const PlaceHolderStateWidget({super.key, required this.title, this.subTitle, this.isError = false});
+  const PlaceHolderStateWidget({super.key, required this.title, this.subTitle, this.isError = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,8 @@ class PlaceHolderStateWidget extends StatelessWidget {
                 style: context.textTheme.bodySmall?.copyWith(color: AppColors.graniteGray),
                 textAlign: TextAlign.center,
               ),
+            if (onTap != null) 12.verticalSizedBox,
+            if (onTap != null) AppButton(text: context.l10n.retry, onPressed: onTap ?? () {}),
           ],
         ),
       ),

@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/core/widgets/app_name.dart';
-import 'package:travel_assign/core/widgets/asset_image.dart';
-import 'package:travel_assign/core/widgets/shimmer_container.dart';
-import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
+import 'package:travel_assign/core/widgets/no_data_widget.dart';
 import 'package:travel_assign/features/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_state.dart';
+import 'package:travel_assign/features/experience/view/widgets/experience_gridview.dart';
+import 'package:travel_assign/features/experience/view/widgets/experience_list_shimmer.dart';
+import 'package:travel_assign/features/experience/view/widgets/experience_screen_interest_list.dart';
+import 'package:travel_assign/features/experience/view/widgets/experience_top_bar.dart';
+import 'package:travel_assign/features/experience/view/widgets/interest_row_shimmer.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
-import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
-import 'package:travel_assign/features/experience/view/widgets/experience_card.dart';
-import 'package:travel_assign/features/experience/view/widgets/interest_option.dart';
-import 'package:travel_assign/features/experience/view/widgets/top_icon.dart';
-import 'package:travel_assign/gen/assets.gen.dart';
+import 'package:travel_assign/features/onboarding/model/interests_model.dart';
 
 class ExperienceScreen extends StatefulWidget {
   const ExperienceScreen({super.key});
@@ -50,40 +47,8 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                   Column(
                     children: [
                       context.viewPadding.top.verticalSizedBox,
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
-                          children: [
-                            Row(
-                              children: [
-                                AppAssetImage(imagePath: Assets.icons.appLogo, height: 25, width: 25),
-                                6.horizontalSizedBox,
-                                const AppName(isLarge: false),
-                              ],
-                            ),
-                            const Spacer(),
-                            BlocBuilder<ThemeCubit, ThemeState>(
-                              builder: (context, state) {
-                                return TopIcon(
-                                  icon: state is LightThemeState ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
-                                  onTap: () {
-                                    context.read<ThemeCubit>().toggleTheme();
-                                  },
-                                );
-                              },
-                            ),
-                            12.horizontalSizedBox,
-                            TopIcon(
-                              icon: Icons.favorite_outline_rounded,
-                              onTap: () {
-                                context.push(SavedExperiencesScreen.routeName);
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
+                      ExperienceTopBar(),
                       40.verticalSizedBox,
-
                       // ---------------- INTERESTS ----------------
                       BlocProvider(
                         create: (_) => InterestCubit()..getUserInterests(),
@@ -99,43 +64,17 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                             builder: (context, state) {
                               switch (state) {
                                 case InterestSuccessState():
-                                  return ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                                    itemBuilder: (context, index) {
-                                      final data = state.data[index];
-                                      return InterestOption(
-                                        imageUrl: data.imageUrl ?? "",
-                                        isSelected: data.isSelected,
-                                        title: data.title ?? "",
-                                        onTap: () {
-                                          data.isSelected = !data.isSelected;
-                                          context.read<InterestCubit>().updateInterests(data);
-                                          _selectedInterests = state.selectedInterests;
-                                          expereinceBloc.getExperiences(interests: state.selectedInterests);
-                                        },
-                                      );
+                                  return ExperienceScreenInterestList(
+                                    dataModel: state.data,
+                                    onTapListItem: (data) {
+                                      _onTapInterestOption(data: data, context: context, state: state);
                                     },
-                                    separatorBuilder: (context, index) => 10.horizontalSizedBox,
-                                    itemCount: state.data.length,
                                   );
-
                                 case InterstErrorState():
-                                  return Center(
-                                    child: Text("Failed to load interests 😕", style: context.textTheme.bodyMedium),
-                                  );
+                                  return SizedBox();
 
                                 default:
-                                  // shimmer for interest row
-                                  return ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                                    itemBuilder: (context, index) {
-                                      return const ShimmerContainer(height: 70, width: 80, borderRadius: 50);
-                                    },
-                                    separatorBuilder: (context, index) => 10.horizontalSizedBox,
-                                    itemCount: 6,
-                                  );
+                                  return InterestRowShimmer();
                               }
                             },
                           ),
@@ -149,56 +88,23 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                   if (state is ExperienceSuccessState)
                     Expanded(
                       child: state.experienceData.isEmpty
-                          ? Center(child: Text("No experiences found 😕", style: context.textTheme.bodyLarge))
-                          : GridView.builder(
-                              padding: EdgeInsets.only(left: 16, right: 16, bottom: context.viewPadding.bottom + 16),
-                              gridDelegate: CommonUtil.experienceGridDelegate,
-                              itemCount: state.experienceData.length,
-                              itemBuilder: (context, index) {
-                                final data = state.experienceData[index];
-                                return ExperienceCard(
-                                  data: data,
-                                  onTap: () =>
-                                      CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? ""),
-                                );
+                          ? PlaceHolderStateWidget(title: context.l10n.no_data_found)
+                          : ExperienceGridview(
+                              experienceData: state.experienceData,
+                              onTapCard: (data) {
+                                CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? "");
                               },
                             ),
                     ),
 
-                  if (state is ExperienceLoadingState || state is ExperienceInitalState)
-                    // shimmer for loading experiences
-                    Expanded(
-                      child: GridView.builder(
-                        padding: EdgeInsets.only(left: 16, right: 16, bottom: context.viewPadding.bottom + 16),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 16 / 9,
-                        ),
-                        itemCount: 4,
-                        itemBuilder: (context, index) {
-                          return const ShimmerContainer(height: 200, width: double.infinity, borderRadius: 16);
-                        },
-                      ),
-                    ),
+                  if (state is ExperienceLoadingState || state is ExperienceInitalState) ExperienceListShimmer(),
 
                   if (state is ExperienceErrorState)
-                    Expanded(
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Something went wrong 😕", style: context.textTheme.bodyLarge),
-                            12.verticalSizedBox,
-                            ElevatedButton.icon(
-                              onPressed: () => expereinceBloc.getExperiences(interests: const []),
-                              icon: const Icon(Icons.refresh_rounded),
-                              label: const Text("Retry"),
-                            ),
-                          ],
-                        ),
-                      ),
+                    PlaceHolderStateWidget(
+                      title: context.l10n.something_went_wrong,
+                      onTap: () {
+                        expereinceBloc.getExperiences(interests: _selectedInterests ?? []);
+                      },
                     ),
                 ],
               ),
@@ -207,5 +113,16 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
         },
       ),
     );
+  }
+
+  void _onTapInterestOption({
+    required InterestsModel data,
+    required BuildContext context,
+    required InterestSuccessState state,
+  }) {
+    data.isSelected = !data.isSelected;
+    context.read<InterestCubit>().updateInterests(data);
+    _selectedInterests = state.selectedInterests;
+    expereinceBloc.getExperiences(interests: state.selectedInterests);
   }
 }

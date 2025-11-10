@@ -11,5 +11,6 @@
   "working_on_it" : "We are working on it",
   "no_saved_exp" : "No Saved Experiences",
   "save_exp_to_see" : "Save experiences to see them here.",
-  "something_went_wrong" : "Something went wrong"
+  "something_went_wrong" : "Something went wrong",
+   "retry" : "Retry"
   }
