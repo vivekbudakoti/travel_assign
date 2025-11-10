@@ -21,6 +21,7 @@ import 'package:travel_assign/gen/assets.gen.dart';
 class ExperienceScreen extends StatefulWidget {
   const ExperienceScreen({super.key});
   static final routeName = AppRoutes.experienceScreen;
+
   @override
   State<ExperienceScreen> createState() => _ExperienceScreenState();
 }
@@ -37,21 +38,22 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
           return Scaffold(
             body: Column(
               children: [
+                // ---------------- HEADER ----------------
                 Column(
                   children: [
                     context.viewPadding.top.verticalSizedBox,
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         children: [
                           Row(
                             children: [
                               AppAssetImage(imagePath: Assets.icons.appLogo, height: 25, width: 25),
                               6.horizontalSizedBox,
-                              AppName(isLarge: false),
+                              const AppName(isLarge: false),
                             ],
                           ),
-                          Spacer(),
+                          const Spacer(),
                           BlocBuilder<ThemeCubit, ThemeState>(
                             builder: (context, state) {
                               return TopIcon(
@@ -63,7 +65,6 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                             },
                           ),
                           12.horizontalSizedBox,
-
                           TopIcon(
                             icon: Icons.favorite_outline_rounded,
                             onTap: () {
@@ -74,6 +75,8 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                       ),
                     ),
                     40.verticalSizedBox,
+
+                    // ---------------- INTERESTS ----------------
                     BlocProvider(
                       create: (_) => InterestCubit()..getUserInterests(),
                       child: SizedBox(
@@ -89,7 +92,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                               case InterestSuccessState():
                                 return ListView.separated(
                                   scrollDirection: Axis.horizontal,
-                                  padding: EdgeInsets.symmetric(horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(horizontal: 16),
                                   itemBuilder: (context, index) {
                                     final data = state.data[index];
                                     return InterestOption(
@@ -104,10 +107,25 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                     );
                                   },
                                   separatorBuilder: (context, index) => 10.horizontalSizedBox,
-                                  itemCount: 8,
+                                  itemCount: state.data.length,
                                 );
+
+                              case InterstErrorState():
+                                return Center(
+                                  child: Text("Failed to load interests 😕", style: context.textTheme.bodyMedium),
+                                );
+
                               default:
-                                return Text("loading");
+                                // shimmer for interest row
+                                return ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                                  itemBuilder: (context, index) {
+                                    return const ShimmerContainer(height: 70, width: 80, borderRadius: 50);
+                                  },
+                                  separatorBuilder: (context, index) => 10.horizontalSizedBox,
+                                  itemCount: 6,
+                                );
                             }
                           },
                         ),
@@ -116,7 +134,33 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                     20.verticalSizedBox,
                   ],
                 ),
+
+                // ---------------- EXPERIENCE LIST ----------------
                 if (state is ExperienceSuccessState)
+                  Expanded(
+                    child: state.experienceData.isEmpty
+                        ? Center(child: Text("No experiences found 😕", style: context.textTheme.bodyLarge))
+                        : GridView.builder(
+                            padding: EdgeInsets.only(left: 16, right: 16, bottom: context.viewPadding.bottom + 16),
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 1,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                              childAspectRatio: 16 / 9,
+                            ),
+                            itemCount: state.experienceData.length,
+                            itemBuilder: (context, index) {
+                              final data = state.experienceData[index];
+                              return ExperienceCard(
+                                data: data,
+                                onTap: () => context.push("${ExperienceDetailScreen.routeName}/${data.id}"),
+                              );
+                            },
+                          ),
+                  ),
+
+                if (state is ExperienceLoadingState || state is ExperienceInitalState)
+                  // shimmer for loading experiences
                   Expanded(
                     child: GridView.builder(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: context.viewPadding.bottom + 16),
@@ -126,17 +170,30 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                         mainAxisSpacing: 10,
                         childAspectRatio: 16 / 9,
                       ),
-                      itemCount: state.experienceData.length,
+                      itemCount: 4,
                       itemBuilder: (context, index) {
-                        final data = state.experienceData[index];
-                        return ExperienceCard(
-                          data: data,
-                          onTap: () => context.push("${ExperienceDetailScreen.routeName}/${data.id}"),
-                        );
+                        return const ShimmerContainer(height: 200, width: double.infinity, borderRadius: 16);
                       },
                     ),
                   ),
-                if (state is ExperienceLoadingState) ShimmerContainer(height: 200, width: double.maxFinite),
+
+                if (state is ExperienceErrorState)
+                  Expanded(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Something went wrong 😕", style: context.textTheme.bodyLarge),
+                          12.verticalSizedBox,
+                          ElevatedButton.icon(
+                            onPressed: () => expereinceBloc.getExperiences(interests: const []),
+                            icon: const Icon(Icons.refresh_rounded),
+                            label: const Text("Retry"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
               ],
             ),
           );

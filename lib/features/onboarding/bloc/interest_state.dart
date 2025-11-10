@@ -21,4 +21,4 @@ class InterestSuccessState extends InterestState {
   }
 }
 
-class InterstFailureState extends InterestState {}
+class InterstErrorState extends InterestState {}
