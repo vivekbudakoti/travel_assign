@@ -27,7 +27,7 @@ class ExperienceScreen extends StatefulWidget {
 
 class _ExperienceScreenState extends State<ExperienceScreen> {
   final expereinceBloc = ExperienceCubit();
-  List<String>? _selectedInterests;
+  List<String> _selectedInterests = [];
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -38,13 +38,12 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
             body: RefreshIndicator(
               color: AppColors.graniteGray,
               onRefresh: () async {
-                if (state is ExperienceSuccessState) {
-                  expereinceBloc.getExperiences(interests: _selectedInterests ?? []);
+                if (state is! ExperienceLoadingState) {
+                  expereinceBloc.getExperiences(interests: _selectedInterests);
                 }
               },
               child: Column(
                 children: [
-                  // ---------------- HEADER ----------------
                   Column(
                     children: [
                       context.viewPadding.top.verticalSizedBox,
@@ -54,14 +53,13 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                             SavedExperiencesScreen.routeName,
                             extra: {
                               RouteConstants.onBackSuccess: () {
-                                expereinceBloc.refreshExperiences(interests: _selectedInterests ?? []);
+                                expereinceBloc.getExperiences(interests: _selectedInterests, isRefresh: true);
                               },
                             },
                           );
                         },
                       ),
                       40.verticalSizedBox,
-                      // ---------------- INTERESTS ----------------
                       BlocProvider(
                         create: (_) => OnboardingCubit()..getUserInterests(),
                         child: SizedBox(
@@ -105,26 +103,26 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                               onTapCard: (data) {
                                 CommonUtil().navigateToExperienceDetail(
                                   context: context,
-                                  id: data.id ?? "",
+                                  id: data.id,
                                   extra: {
                                     RouteConstants.onBackSuccess: () {
-                                      expereinceBloc.refreshExperiences(interests: _selectedInterests ?? []);
+                                      expereinceBloc.getExperiences(interests: _selectedInterests, isRefresh: true);
                                     },
                                   },
                                 );
                               },
                             ),
-                    ),
-
-                  if (state is ExperienceLoadingState || state is ExperienceInitalState) ExperienceListShimmer(),
-
-                  if (state is ExperienceErrorState)
+                    )
+                  else if (state is ExperienceErrorState)
                     PlaceHolderStateWidget(
                       title: context.l10n.something_went_wrong,
+                      isError: true,
                       onTap: () {
-                        expereinceBloc.getExperiences(interests: _selectedInterests ?? []);
+                        expereinceBloc.getExperiences(interests: _selectedInterests);
                       },
-                    ),
+                    )
+                  else
+                    const ExperienceListShimmer(),
                 ],
               ),
             ),

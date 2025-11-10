@@ -23,17 +23,19 @@ class CommonUtil {
     return decoded.map((key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)));
   }
 
-  Future<void> navigateToExperienceDetail({required BuildContext context, required String id, Object? extra}) async {
-    context.push("${ExperienceDetailScreen.routeName}/$id", extra: extra);
+  Future<void> navigateToExperienceDetail({required BuildContext context, String? id, Object? extra}) async {
+    if (id != null) {
+      context.push("${ExperienceDetailScreen.routeName}/$id", extra: extra);
+    }
   }
 
-    static const SliverGridDelegateWithFixedCrossAxisCount interestsGridDelegate =
-       SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          childAspectRatio: 1,
-        );
+  static const SliverGridDelegateWithFixedCrossAxisCount interestsGridDelegate =
+      SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        childAspectRatio: 1,
+      );
 
   static const SliverGridDelegateWithFixedCrossAxisCount experienceGridDelegate =
       SliverGridDelegateWithFixedCrossAxisCount(

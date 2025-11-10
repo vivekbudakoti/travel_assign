@@ -6,14 +6,9 @@ class ExperienceInitalState extends ExperienceState {}
 
 class ExperienceLoadingState extends ExperienceState {}
 
-class IntrestLoaded extends ExperienceState {
-  final List<String> intrests;
-  IntrestLoaded({required this.intrests});
-}
-
 class ExperienceSuccessState extends ExperienceState {
   final List<ExperienceDataModel> experienceData;
-  
+
   ExperienceSuccessState({required this.experienceData});
 }
 

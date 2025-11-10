@@ -32,6 +32,6 @@ class ExperienceLocalData extends ExperienceData {
         filteredData[key] = currentData;
       }
     });
-    return Future.value(ExperienceDataModel.getListFromRawData(filteredData));
+    return ExperienceDataModel.getListFromRawData(filteredData);
   }
 }
