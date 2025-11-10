@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToNextScreen() async {
     await Future.delayed(Duration(seconds: 2), () {
-      AppRouter.router.push(InterestScreen.routeName);
+      AppRouter.router.pushReplacement(InterestScreen.routeName);
     });
   }
 

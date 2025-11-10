@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
+import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
@@ -51,7 +52,7 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                   ),
                   if (state is SavedEperienceLoadedState)
                     (state.experienceData.isEmpty)
-                        ? NoDataWidget(title: "No Data Found", subTitle: "Save experiences to see them here.")
+                        ? NoDataWidget(title: "No Saved Experiences", subTitle: "Save experiences to see them here.")
                         : Expanded(
                             child: GridView.builder(
                               padding: EdgeInsets.zero,
@@ -66,7 +67,8 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                                 final data = state.experienceData[index];
                                 return ExperienceCard(
                                   data: data,
-                                  onTap: () => context.push(ExperienceDetailScreen.routeName),
+                                  onTap: () =>
+                                      CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? ""),
                                 );
                               },
                             ),

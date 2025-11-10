@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
+import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
@@ -153,7 +154,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                               final data = state.experienceData[index];
                               return ExperienceCard(
                                 data: data,
-                                onTap: () => context.push("${ExperienceDetailScreen.routeName}/${data.id}"),
+                                onTap: () => CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? ""),
                               );
                             },
                           ),
