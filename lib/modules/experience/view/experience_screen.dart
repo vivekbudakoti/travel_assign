@@ -9,7 +9,7 @@ import 'package:travel_assign/core/widgets/experience_gridview.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
 import 'package:travel_assign/modules/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/modules/experience/bloc/experience_state.dart';
-import 'package:travel_assign/modules/experience/view/widgets/experience_list_shimmer.dart';
+import 'package:travel_assign/core/widgets/experience_list_shimmer.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_screen_interest_list.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_top_bar.dart';
 import 'package:travel_assign/modules/experience/view/widgets/interest_row_shimmer.dart';

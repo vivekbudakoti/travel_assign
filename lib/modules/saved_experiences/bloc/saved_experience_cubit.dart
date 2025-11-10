@@ -7,19 +7,12 @@ class SavedExperienceCubit extends Cubit<SavedExperienceStates> {
     getSavedExperiences();
   }
 
-  Future<void> getSavedExperiences() async {
-    emit(SavedEperienceLoadingState());
-    try {
-      final data = await SavedExperienceRepo().getSavedExperiences();
-      emit(SavedEperienceLoadedState(experienceData: data));
-    } catch (e) {
-      emit(SavedEperienceErrorState());
+  Future<void> getSavedExperiences({bool isRefresh = false}) async {
+    if (!isRefresh) {
+      emit(SavedEperienceLoadingState());
     }
-  }
-
-  Future<void> refreshExperiences() async {
     try {
-      final data = await SavedExperienceRepo().getSavedExperiences();
+      final data = await SavedExperienceRepo.instance.getSavedExperiences();
       emit(SavedEperienceLoadedState(experienceData: data));
     } catch (e) {
       emit(SavedEperienceErrorState());

@@ -6,8 +6,8 @@ import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/experience_gridview.dart';
+import 'package:travel_assign/core/widgets/experience_list_shimmer.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
-import 'package:travel_assign/core/widgets/shimmer_container.dart';
 import 'package:travel_assign/modules/saved_experiences/bloc/saved_eperience_states.dart';
 import 'package:travel_assign/modules/saved_experiences/bloc/saved_experience_cubit.dart';
 
@@ -23,6 +23,7 @@ class SavedExperiencesScreen extends StatefulWidget {
 class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
   Function? _onBack;
   bool _isSavedPrefChanged = false;
+
   @override
   void initState() {
     super.initState();
@@ -87,18 +88,21 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                                   onTapCard: (data) {
                                     CommonUtil().navigateToExperienceDetail(
                                       context: context,
-                                      id: data.id ?? "",
+                                      id: data.id,
                                       extra: {
                                         RouteConstants.onBackSuccess: () {
-                                          context.read<SavedExperienceCubit>().refreshExperiences();
+                                          context.read<SavedExperienceCubit>().getSavedExperiences(isRefresh: true);
                                           _toggleSavedPrefChanged();
                                         },
                                       },
                                     );
                                   },
                                 ),
-                              ),
-                      if (state is SavedEperienceLoadingState) ShimmerContainer(height: 200, width: double.maxFinite),
+                              )
+                      else if (state is SavedEperienceLoadingState)
+                        PlaceHolderStateWidget(title: context.l10n.something_went_wrong, isError: true)
+                      else
+                        ExperienceListShimmer(padding: EdgeInsets.zero),
                     ],
                   ),
                 ),

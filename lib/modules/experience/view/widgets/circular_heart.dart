@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
@@ -47,9 +45,9 @@ class _CircularHeartState extends State<CircularHeart> {
         bool status = false;
         final id = widget.id;
         if (!_isSelected) {
-          status = await SavedExperienceRepo().saveExperiences(id: id);
+          status = await SavedExperienceRepo.instance.saveExperiences(id: id);
         } else {
-          status = await SavedExperienceRepo().removeSavedExperiences(id: id);
+          status = await SavedExperienceRepo.instance.removeSavedExperiences(id: id);
         }
         if (status) {
           _isSelected = !_isSelected;
