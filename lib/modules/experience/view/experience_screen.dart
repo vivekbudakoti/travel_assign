@@ -13,7 +13,7 @@ import 'package:travel_assign/modules/experience/view/widgets/experience_list_sh
 import 'package:travel_assign/modules/experience/view/widgets/experience_screen_interest_list.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_top_bar.dart';
 import 'package:travel_assign/modules/experience/view/widgets/interest_row_shimmer.dart';
-import 'package:travel_assign/modules/onboarding/bloc/interest_cubit.dart';
+import 'package:travel_assign/modules/onboarding/bloc/onboarding_cubit.dart';
 import 'package:travel_assign/modules/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
 import 'package:travel_assign/modules/saved_experiences/view/saved_experiences_screen.dart';
@@ -63,26 +63,26 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                       40.verticalSizedBox,
                       // ---------------- INTERESTS ----------------
                       BlocProvider(
-                        create: (_) => InterestCubit()..getUserInterests(),
+                        create: (_) => OnboardingCubit()..getUserInterests(),
                         child: SizedBox(
                           height: 80,
-                          child: BlocConsumer<InterestCubit, InterestState>(
+                          child: BlocConsumer<OnboardingCubit, OnboardingState>(
                             listener: (context, state) {
-                              if (state is InterestSuccessState) {
+                              if (state is OnboardingSuccessState) {
                                 expereinceBloc.getExperiences(interests: state.selectedInterests);
                                 _selectedInterests = state.selectedInterests;
                               }
                             },
                             builder: (context, state) {
                               switch (state) {
-                                case InterestSuccessState():
+                                case OnboardingSuccessState():
                                   return ExperienceScreenInterestList(
                                     dataModel: state.data,
                                     onTapListItem: (data) {
                                       _onTapInterestOption(data: data, context: context, state: state);
                                     },
                                   );
-                                case InterstErrorState():
+                                case OnboardingErrorState():
                                   return SizedBox();
 
                                 default:
@@ -137,10 +137,10 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
   void _onTapInterestOption({
     required InterestsModel data,
     required BuildContext context,
-    required InterestSuccessState state,
+    required OnboardingSuccessState state,
   }) {
     data.isSelected = !data.isSelected;
-    context.read<InterestCubit>().updateInterests(data);
+    context.read<OnboardingCubit>().updateInterests(data);
     _selectedInterests = state.selectedInterests;
     expereinceBloc.getExperiences(interests: state.selectedInterests);
   }

@@ -1,24 +1,24 @@
 import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
 
-abstract class InterestState {}
+abstract class OnboardingState {}
 
-class InterstInitalState extends InterestState {}
+class OnboardingInitalState extends OnboardingState {}
 
-class InterstLoadingState extends InterestState {}
+class OnboardingLoadingState extends OnboardingState {}
 
-class InterestSuccessState extends InterestState {
+class OnboardingSuccessState extends OnboardingState {
   final List<InterestsModel> data;
   final List<String> selectedInterests;
 
-  InterestSuccessState({required this.data, List<String>? selectedInterests})
+  OnboardingSuccessState({required this.data, List<String>? selectedInterests})
     : selectedInterests = selectedInterests ?? [];
 
-  InterestSuccessState copyWith({List<InterestsModel>? data, List<String>? selectedInterests}) {
-    return InterestSuccessState(
+  OnboardingSuccessState copyWith({List<InterestsModel>? data, List<String>? selectedInterests}) {
+    return OnboardingSuccessState(
       data: data ?? this.data,
       selectedInterests: selectedInterests ?? this.selectedInterests,
     );
   }
 }
 
-class InterstErrorState extends InterestState {}
+class OnboardingErrorState extends OnboardingState {}

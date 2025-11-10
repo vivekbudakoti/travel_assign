@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_assign/modules/experience_details/view/experience_detail_screen.dart';
 import 'package:travel_assign/modules/experience/view/experience_screen.dart';
 import 'package:travel_assign/modules/saved_experiences/view/saved_experiences_screen.dart';
-import 'package:travel_assign/modules/onboarding/view/interest_screen.dart';
+import 'package:travel_assign/modules/onboarding/view/onboarding_screen.dart';
 import 'package:travel_assign/modules/splash/splash_screen.dart';
 
 class AppRouter {
@@ -19,7 +19,7 @@ class AppRouter {
     initialLocation: SplashScreen.routeName,
     routes: [
       GoRoute(path: SplashScreen.routeName, builder: (context, state) => const SplashScreen()),
-      GoRoute(path: InterestScreen.routeName, builder: (context, state) => InterestScreen()),
+      GoRoute(path: OnboardingScreen.routeName, builder: (context, state) => OnboardingScreen()),
       GoRoute(
         path: SavedExperiencesScreen.routeName,
         builder: (context, state) => SavedExperiencesScreen(extra: state.extra),

@@ -27,6 +27,14 @@ class CommonUtil {
     context.push("${ExperienceDetailScreen.routeName}/$id", extra: extra);
   }
 
+    static const SliverGridDelegateWithFixedCrossAxisCount interestsGridDelegate =
+       SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 1,
+        );
+
   static const SliverGridDelegateWithFixedCrossAxisCount experienceGridDelegate =
       SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 1,

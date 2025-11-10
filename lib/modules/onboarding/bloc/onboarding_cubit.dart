@@ -5,32 +5,32 @@ import 'package:travel_assign/modules/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
 import 'package:travel_assign/modules/onboarding/repository/interest_repo.dart';
 
-class InterestCubit extends Cubit<InterestState> {
-  InterestCubit() : super(InterstInitalState());
+class OnboardingCubit extends Cubit<OnboardingState> {
+  OnboardingCubit() : super(OnboardingInitalState());
 
   Future<void> getInterests() async {
-    emit(InterstLoadingState());
+    emit(OnboardingLoadingState());
     try {
-      final data = await InterestRepo().getInterests();
-      emit(InterestSuccessState(data: data));
+      final data = await InterestRepo.instance.getInterests();
+      emit(OnboardingSuccessState(data: data));
     } catch (e) {
-      emit(InterstErrorState());
+      emit(OnboardingErrorState());
     }
   }
 
   Future<void> getUserInterests() async {
-    emit(InterstLoadingState());
+    emit(OnboardingLoadingState());
     try {
-      final userData = await InterestRepo().getUserInterests();
-      emit(InterestSuccessState(data: userData));
+      final userData = await InterestRepo.instance.getUserInterests();
+      emit(OnboardingSuccessState(data: userData));
     } catch (e) {
-      emit(InterstErrorState());
+      emit(OnboardingErrorState());
     }
   }
 
   void updateInterests(InterestsModel data) {
-    if (data.id != null && state is InterestSuccessState) {
-      final successState = state as InterestSuccessState;
+    if (data.id != null && state is OnboardingSuccessState) {
+      final successState = state as OnboardingSuccessState;
       if (data.isSelected) {
         successState.selectedInterests.add(data.id!);
       } else {
@@ -41,9 +41,9 @@ class InterestCubit extends Cubit<InterestState> {
   }
 
   Future<bool> onTapContinue() async {
-    if (state is InterestSuccessState) {
-      final successState = state as InterestSuccessState;
-      final status = await InterestRepo().saveInterests(ids: successState.selectedInterests);
+    if (state is OnboardingSuccessState) {
+      final successState = state as OnboardingSuccessState;
+      final status = await InterestRepo.instance.saveInterests(ids: successState.selectedInterests);
       if (status) {
         AppRouter.router.push(ExperienceScreen.routeName);
       }

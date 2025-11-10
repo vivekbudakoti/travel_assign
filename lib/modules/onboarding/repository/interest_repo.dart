@@ -2,7 +2,14 @@ import 'package:travel_assign/modules/onboarding/data/interest_data.dart';
 import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
 
 class InterestRepo {
-  final InterestData dataSource = InterestLocalData();
+  static InterestRepo? _instance;
+  late final InterestData dataSource;
+
+  InterestRepo._internal() {
+    dataSource = InterestLocalData();
+  }
+
+  static InterestRepo get instance => _instance ??= InterestRepo._internal();
 
   Future<List<InterestsModel>> getInterests() async {
     return await dataSource.getInterests();
