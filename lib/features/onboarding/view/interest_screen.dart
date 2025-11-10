@@ -6,9 +6,9 @@ import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
+import 'package:travel_assign/features/onboarding/view/widgets/inerest_gridview.dart';
 import 'package:travel_assign/features/onboarding/view/widgets/interest_loading.dart';
 import 'package:travel_assign/features/onboarding/view/widgets/intrerest_bottom.dart';
-import 'package:travel_assign/features/onboarding/view/widgets/intrerest_card.dart';
 
 class InterestScreen extends StatelessWidget {
   InterestScreen({super.key});
@@ -55,29 +55,12 @@ class InterestScreen extends StatelessWidget {
                               style: context.textTheme.bodyMedium?.copyWith(color: AppColors.graniteGray),
                             ),
                             16.verticalSizedBox,
-                            Expanded(
-                              child: GridView.builder(
-                                padding: EdgeInsets.only(bottom: 100),
-                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 10,
-                                  mainAxisSpacing: 10,
-                                  childAspectRatio: 1,
-                                ),
-                                itemCount: interestsData.length,
-                                itemBuilder: (context, index) {
-                                  final data = interestsData[index];
-                                  return IntrerestCard(
-                                    title: data.title ?? "",
-                                    imageUrl: data.imageUrl ?? "",
-                                    isSelected: data.isSelected,
-                                    onTap: () {
-                                      data.isSelected = !data.isSelected;
-                                      context.read<InterestCubit>().updateInterests(data);
-                                    },
-                                  );
-                                },
-                              ),
+                            InerestGridview(
+                              interestsData: interestsData,
+                              onTapinterest: (data) {
+                                data.isSelected = !data.isSelected;
+                                context.read<InterestCubit>().updateInterests(data);
+                              },
                             ),
                           ],
                         ),

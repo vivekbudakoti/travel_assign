@@ -4,10 +4,10 @@ import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
+import 'package:travel_assign/core/widgets/experience_gridview.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
 import 'package:travel_assign/features/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_state.dart';
-import 'package:travel_assign/features/experience/view/widgets/experience_gridview.dart';
 import 'package:travel_assign/features/experience/view/widgets/experience_list_shimmer.dart';
 import 'package:travel_assign/features/experience/view/widgets/experience_screen_interest_list.dart';
 import 'package:travel_assign/features/experience/view/widgets/experience_top_bar.dart';
@@ -84,7 +84,6 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                     ],
                   ),
 
-                  // ---------------- EXPERIENCE LIST ----------------
                   if (state is ExperienceSuccessState)
                     Expanded(
                       child: state.experienceData.isEmpty
