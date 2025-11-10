@@ -37,20 +37,22 @@ class SavedExperiencesLocalData extends SavedExperiencesData {
   @override
   Future<List<ExperienceDataModel>> getSavedExperiences() async {
     await Future.delayed(const Duration(milliseconds: 250));
+    final savedJson = _getFromSharedPrefernce();
+    return ExperienceDataModel.getListFromRawData(savedJson);
+  }
 
+  Map<String, Map<String, dynamic>> _getFromSharedPrefernce() {
     final pref = SharedPrefUtil();
     final savedData = pref.getString(SharedPreferencesConstants.savedExperiences);
 
-    if (savedData == null || savedData.isEmpty) return [];
+    if (savedData == null || savedData.isEmpty) return {};
 
     final decoded = jsonDecode(savedData);
 
-    if (decoded is! Map) return [];
+    if (decoded is! Map) return {};
 
-    final Map<String, Map<String, dynamic>> savedJson = decoded.map(
-      (key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)),
-    );
-
-    return ExperienceDataModel.getListFromRawData(savedJson);
+    return decoded.map((key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)));
   }
+
+  
 }
