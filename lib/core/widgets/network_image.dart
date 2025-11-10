@@ -22,7 +22,7 @@ class AppNetworkImage extends StatelessWidget {
         ),
       ),
       placeholder: (context, url) => ShimmerContainer(width: width, height: height),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      errorWidget: (context, url, error) => ShimmerContainer(width: width, height: height),
     );
   }
 }

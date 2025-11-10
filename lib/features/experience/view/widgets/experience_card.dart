@@ -38,6 +38,7 @@ class ExperienceCard extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: CircularHeart(
+                  key: ValueKey(data.id ?? ""),
                   isSelected: data.isSaved,
                   id: data.id ?? "",
                   onToggle: (isSaved) {
