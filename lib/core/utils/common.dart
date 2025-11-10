@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
-import 'package:travel_assign/features/experience_details/view/experience_detail_screen.dart';
+import 'package:travel_assign/modules/experience_details/view/experience_detail_screen.dart';
 
 class CommonUtil {
   CommonUtil._internal();

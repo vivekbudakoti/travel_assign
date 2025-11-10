@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travel_assign/features/experience_details/view/experience_detail_screen.dart';
-import 'package:travel_assign/features/experience/view/experience_screen.dart';
-import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
-import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
-import 'package:travel_assign/features/onboarding/view/splash_screen.dart';
+import 'package:travel_assign/modules/experience_details/view/experience_detail_screen.dart';
+import 'package:travel_assign/modules/experience/view/experience_screen.dart';
+import 'package:travel_assign/modules/saved_experiences/view/saved_experiences_screen.dart';
+import 'package:travel_assign/modules/onboarding/view/interest_screen.dart';
+import 'package:travel_assign/modules/splash/splash_screen.dart';
 
 class AppRouter {
   AppRouter._internal();
