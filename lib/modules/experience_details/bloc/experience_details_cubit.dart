@@ -8,7 +8,7 @@ class ExperienceDetailsCubit extends Cubit<ExperienceDetailsState> {
   Future<void> getDetails({required String id}) async {
     emit(ExperienceDetailsLoadingState());
     try {
-      final data = await ExperienceDetailsRepo().getDetails(id: id);
+      final data = await ExperienceDetailsRepo.instance.getDetails(id: id);
       if (data != null) {
         emit(ExperienceDetailsSuccessState(experienceData: data));
       } else {

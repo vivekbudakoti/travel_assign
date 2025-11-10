@@ -9,9 +9,9 @@ abstract class ExperienceDetailsData {
 class ExperienceDetailsLocalData extends ExperienceDetailsData {
   @override
   Future<ExperienceDataModel?> getDetails(String id) async {
-    final Map<String, dynamic> filtereredJson = Map.from(experienceRawData[id] ?? {});
+    final Map<String, dynamic> experience = Map.from(experienceRawData[id] ?? {});
     final savedData = CommonUtil().getSavedExpFromSharedPref();
-    filtereredJson['is_saved'] = savedData[id] != null;
-    return ExperienceDataModel.fromMap(filtereredJson);
+    experience['is_saved'] = savedData[id] != null;
+    return ExperienceDataModel.fromMap(experience);
   }
 }

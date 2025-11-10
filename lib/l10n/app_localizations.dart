@@ -176,6 +176,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved Experiences'**
   String get saved_experiences;
+
+  /// No description provided for @things_you_will_love.
+  ///
+  /// In en, this message translates to:
+  /// **'Things You will Love:'**
+  String get things_you_will_love;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

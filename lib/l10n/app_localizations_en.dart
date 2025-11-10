@@ -49,4 +49,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saved_experiences => 'Saved Experiences';
+
+  @override
+  String get things_you_will_love => 'Things You will Love:';
 }
