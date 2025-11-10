@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/common.dart';
@@ -15,11 +16,11 @@ import 'package:travel_assign/features/experience/view/widgets/interest_row_shim
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/features/onboarding/model/interests_model.dart';
+import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
 
 class ExperienceScreen extends StatefulWidget {
   const ExperienceScreen({super.key});
   static final routeName = AppRoutes.experienceScreen;
-
   @override
   State<ExperienceScreen> createState() => _ExperienceScreenState();
 }
@@ -47,7 +48,18 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                   Column(
                     children: [
                       context.viewPadding.top.verticalSizedBox,
-                      ExperienceTopBar(),
+                      ExperienceTopBar(
+                        onTapHeartIcon: () {
+                          context.push(
+                            SavedExperiencesScreen.routeName,
+                            extra: {
+                              RouteConstants.onBackSuccess: () {
+                                expereinceBloc.refreshExperiences(interests: _selectedInterests ?? []);
+                              },
+                            },
+                          );
+                        },
+                      ),
                       40.verticalSizedBox,
                       // ---------------- INTERESTS ----------------
                       BlocProvider(
@@ -91,7 +103,15 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                           : ExperienceGridview(
                               experienceData: state.experienceData,
                               onTapCard: (data) {
-                                CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? "");
+                                CommonUtil().navigateToExperienceDetail(
+                                  context: context,
+                                  id: data.id ?? "",
+                                  extra: {
+                                    RouteConstants.onBackSuccess: () {
+                                      expereinceBloc.refreshExperiences(interests: _selectedInterests ?? []);
+                                    },
+                                  },
+                                );
                               },
                             ),
                     ),

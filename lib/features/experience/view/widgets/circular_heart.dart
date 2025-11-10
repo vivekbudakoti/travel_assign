@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
@@ -26,10 +28,8 @@ class _CircularHeartState extends State<CircularHeart> {
 
   @override
   void didUpdateWidget(covariant CircularHeart oldWidget) {
+    _updateSelected();
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.isSelected != widget.isSelected) {
-      _updateSelected();
-    }
   }
 
   void _updateSelected() {

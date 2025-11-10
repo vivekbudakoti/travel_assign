@@ -20,7 +20,10 @@ class AppRouter {
     routes: [
       GoRoute(path: SplashScreen.routeName, builder: (context, state) => const SplashScreen()),
       GoRoute(path: InterestScreen.routeName, builder: (context, state) => InterestScreen()),
-      GoRoute(path: SavedExperiencesScreen.routeName, builder: (context, state) => const SavedExperiencesScreen()),
+      GoRoute(
+        path: SavedExperiencesScreen.routeName,
+        builder: (context, state) => SavedExperiencesScreen(extra: state.extra),
+      ),
       GoRoute(path: ExperienceScreen.routeName, builder: (context, state) => const ExperienceScreen()),
       GoRoute(
         path: "${ExperienceDetailScreen.routeName}/:id",
@@ -30,7 +33,7 @@ class AppRouter {
             key: state.pageKey,
             transitionDuration: const Duration(milliseconds: 600),
             reverseTransitionDuration: const Duration(milliseconds: 400),
-            child: ExperienceDetailScreen(id: id),
+            child: ExperienceDetailScreen(id: id, extra: state.extra),
             transitionsBuilder: (context, animation, secondaryAnimation, child) {
               final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
               return FadeTransition(opacity: curved, child: child);

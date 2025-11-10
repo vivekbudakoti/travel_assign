@@ -8,7 +8,8 @@ import 'package:travel_assign/features/experience/view/widgets/location_chip.dar
 class ExperienceCard extends StatelessWidget {
   final VoidCallback onTap;
   final ExperienceDataModel data;
-  const ExperienceCard({super.key, required this.onTap, required this.data});
+  final void Function()? onHeratTapCallBack;
+  const ExperienceCard({super.key, required this.onTap, required this.data, this.onHeratTapCallBack});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,7 @@ class ExperienceCard extends StatelessWidget {
                   id: data.id ?? "",
                   onToggle: (isSaved) {
                     data.isSaved = isSaved;
+                    onHeratTapCallBack?.call();
                   },
                 ),
               ),

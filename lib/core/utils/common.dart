@@ -23,8 +23,8 @@ class CommonUtil {
     return decoded.map((key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)));
   }
 
-  Future<void> navigateToExperienceDetail({required BuildContext context, required String id}) async {
-    context.push("${ExperienceDetailScreen.routeName}/$id");
+  Future<void> navigateToExperienceDetail({required BuildContext context, required String id, Object? extra}) async {
+    context.push("${ExperienceDetailScreen.routeName}/$id", extra: extra);
   }
 
   static const SliverGridDelegateWithFixedCrossAxisCount experienceGridDelegate =
