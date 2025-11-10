@@ -119,7 +119,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                 if (state is ExperienceSuccessState)
                   Expanded(
                     child: GridView.builder(
-                      padding: EdgeInsets.only(left: 16, right: 16),
+                      padding: EdgeInsets.only(left: 16, right: 16, bottom: context.viewPadding.bottom + 16),
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         crossAxisSpacing: 10,

@@ -29,16 +29,20 @@ class ExperienceCard extends StatelessWidget {
               Align(
                 alignment: AlignmentGeometry.bottomCenter,
                 child: ExperienceCardFooter(
-                  topTileTitle: "",
+                  interests: data.interests?.map((e) => e.title ?? "").toList() ?? [],
                   bottomTileTitle: data.title ?? "",
                   bottomTileSubText: data.shortDescription ?? "",
                 ),
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: CircularHeart(isSelected: data.isSaved,id: data.id ?? "",onToggle: (isSaved) {
-                  data.isSaved = isSaved;
-                },),
+                child: CircularHeart(
+                  isSelected: data.isSaved,
+                  id: data.id ?? "",
+                  onToggle: (isSaved) {
+                    data.isSaved = isSaved;
+                  },
+                ),
               ),
             ],
           ),

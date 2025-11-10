@@ -109,7 +109,7 @@ Map<String, Map<String, dynamic>> experienceRawData = {
   "3": {
     "id": "3",
     "title": "Kyoto Zen Journey",
-    "category": "Spiritual, Culture",
+    "category": "Spiritual, Culture, Nature, Food, Adventure",
     "location": "Kyoto, Japan",
     "short_description": "Walk through ancient temples and serene bamboo forests that calm the mind.",
     "full_description":
@@ -134,6 +134,22 @@ Map<String, Map<String, dynamic>> experienceRawData = {
         "title": "Culture",
         "image_url":
             "https://plus.unsplash.com/premium_vector-1726857784933-5e1f37459ec4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "3": {
+        "id": 3,
+        "title": "Nature",
+        "image_url":
+            "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900",
+      },
+      "8": {
+        "id": 8,
+        "title": "Food",
+        "image_url": "https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_1280.jpg",
+      },
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
       },
     },
   },
@@ -398,7 +414,7 @@ Map<String, Map<String, dynamic>> experienceRawData = {
   "12": {
     "id": "12",
     "title": "Cape Town Coastal Escape",
-    "category": "Beaches, Nature, Mountains",
+    "category": "Beaches, Nature, Mountains , Adventure",
     "location": "Cape Town, South Africa",
     "short_description": "Where oceans meet mountains in perfect harmony.",
     "full_description":
@@ -429,6 +445,11 @@ Map<String, Map<String, dynamic>> experienceRawData = {
         "id": 1,
         "title": "Mountains",
         "image_url": "https://cdn.pixabay.com/photo/2024/02/29/15/19/ai-generated-8604636_960_720.jpg",
+      },
+      "7": {
+        "id": 7,
+        "title": "Adventure",
+        "image_url": "https://cdn.pixabay.com/photo/2025/03/24/20/08/climber-9491285_1280.png",
       },
     },
   },

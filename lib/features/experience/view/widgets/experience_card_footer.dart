@@ -5,43 +5,37 @@ import 'package:travel_assign/features/experience/view/widgets/title_subtitle_ca
 import 'package:travel_assign/core/widgets/translucent_card.dart';
 
 class ExperienceCardFooter extends StatelessWidget {
-  final String topTileTitle;
+  final List<String> interests;
   final String bottomTileTitle;
   final String bottomTileSubText;
   const ExperienceCardFooter({
     super.key,
-    required this.topTileTitle,
+    required this.interests,
     required this.bottomTileTitle,
     required this.bottomTileSubText,
   });
-
+  bool get _countIsGreaterThanThree => interests.length > 3;
+  int get _interestLenght => interests.length;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            TransluentCard(
-              takeFullWidth: false,
-              child: Text("Nature", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
-            ),
-            2.horizontalSizedBox,
-            TransluentCard(
-              takeFullWidth: false,
-              child: Text("Adventure", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
-            ),
-            2.horizontalSizedBox,
-            TransluentCard(
-              takeFullWidth: false,
-              child: Text("Spritual", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
-            ),
-            TransluentCard(
-              takeFullWidth: false,
-              child: Text("+2", style: context.textTheme.bodySmall?.copyWith(color: AppColors.white)),
-            ),
-          ],
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Wrap(
+            children: List.generate(_countIsGreaterThanThree ? 4 : _interestLenght, (index) {
+              return TransluentCard(
+                padding: const EdgeInsets.only(right: 4),
+                takeFullWidth: false,
+                child: Text(
+                  (index == 3) ? "+${interests.length - 3}" : interests[index],
+                  style: context.textTheme.bodySmall?.copyWith(color: AppColors.white),
+                ),
+              );
+            }),
+          ),
         ),
         4.verticalSizedBox,
         TitleSubtitleCard(title: bottomTileTitle, subtitle: bottomTileSubText),
