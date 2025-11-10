@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_assign/core/widgets/network_image.dart';
 
 class AppCarousel extends StatefulWidget {
   final List<String> imageUrls;
   final double height;
   final Duration autoScrollDuration;
   final Duration animationDuration;
+  final String? firstImageHeroTag;
 
   const AppCarousel({
     super.key,
@@ -13,6 +15,7 @@ class AppCarousel extends StatefulWidget {
     this.height = 500,
     this.autoScrollDuration = const Duration(seconds: 3),
     this.animationDuration = const Duration(milliseconds: 800),
+    this.firstImageHeroTag,
   });
 
   @override
@@ -49,12 +52,21 @@ class _AutoScrollCarouselViewState extends State<AppCarousel> {
               }
             },
           ),
-          items: List.generate(
-            images.length,
-            (index) => Image.network(images[index], fit: BoxFit.cover, width: double.infinity, height: widget.height),
-          ),
+          items: List.generate(images.length, (index) {
+            final image = AppNetworkImage(
+              imageUrl: images[index],
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: widget.height,
+            );
+
+            if (index == 0 && widget.firstImageHeroTag != null) {
+              return Hero(tag: widget.firstImageHeroTag!, child: image);
+            }
+            return image;
+          }),
         ),
-        // Indicator
+
         Positioned(
           bottom: 120,
           child: Row(

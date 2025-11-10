@@ -9,7 +9,7 @@ import 'package:travel_assign/core/widgets/shimmer_container.dart';
 import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_state.dart';
-import 'package:travel_assign/features/experience/view/experience_detail_screen.dart';
+import 'package:travel_assign/features/experience_details/view/experience_detail_screen.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
@@ -129,7 +129,10 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                       itemCount: state.experienceData.length,
                       itemBuilder: (context, index) {
                         final data = state.experienceData[index];
-                        return ExperienceCard(data: data, onTap: () => context.push(ExperienceDetailScreen.routeName));
+                        return ExperienceCard(
+                          data: data,
+                          onTap: () => context.push("${ExperienceDetailScreen.routeName}/${data.id}"),
+                        );
                       },
                     ),
                   ),

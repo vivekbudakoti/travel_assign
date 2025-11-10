@@ -1,8 +1,5 @@
-import 'dart:convert';
-
-import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/constants/raw_json.dart';
-import 'package:travel_assign/core/utils/shared_pref_util.dart';
+import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/features/experience/model/experience_data_model.dart';
 
 abstract class ExperienceData {
@@ -14,7 +11,7 @@ class ExperienceLocalData extends ExperienceData {
   Future<List<ExperienceDataModel>> getExperiences({List<String> interests = const []}) async {
     await Future.delayed(Duration(milliseconds: 250));
     Map<String, Map<String, dynamic>> filteredData = {};
-    final savedJson = _getFromSharedPrefernce();
+    final savedJson = CommonUtil().getSavedExpFromSharedPref();
     experienceRawData.forEach((key, value) {
       Map<String, dynamic> currentData = Map.from(value);
       bool isAdded = false;
@@ -36,18 +33,5 @@ class ExperienceLocalData extends ExperienceData {
       }
     });
     return Future.value(ExperienceDataModel.getListFromRawData(filteredData));
-  }
-
-  Map<String, Map<String, dynamic>> _getFromSharedPrefernce() {
-    final pref = SharedPrefUtil();
-    final savedData = pref.getString(SharedPreferencesConstants.savedExperiences);
-
-    if (savedData == null || savedData.isEmpty) return {};
-
-    final decoded = jsonDecode(savedData);
-
-    if (decoded is! Map) return {};
-
-    return decoded.map((key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)));
   }
 }

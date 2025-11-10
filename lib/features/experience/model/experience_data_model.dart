@@ -59,6 +59,7 @@ class ExperienceDataModel {
     };
   }
 
+
   static List<ExperienceDataModel> getListFromRawData(Map<String, Map<String, dynamic>>? rawData) {
     if (rawData == null) return [];
     return rawData.values.map((itemMap) => ExperienceDataModel.fromMap(itemMap)).toList();

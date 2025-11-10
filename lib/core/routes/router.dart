@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travel_assign/features/experience/view/experience_detail_screen.dart';
+import 'package:travel_assign/features/experience_details/view/experience_detail_screen.dart';
 import 'package:travel_assign/features/experience/view/experience_screen.dart';
 import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
 import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
@@ -23,13 +23,14 @@ class AppRouter {
       GoRoute(path: SavedExperiencesScreen.routeName, builder: (context, state) => const SavedExperiencesScreen()),
       GoRoute(path: ExperienceScreen.routeName, builder: (context, state) => const ExperienceScreen()),
       GoRoute(
-        path: ExperienceDetailScreen.routeName,
+        path: "${ExperienceDetailScreen.routeName}/:id",
         pageBuilder: (context, state) {
+          final id = state.pathParameters['id']!;
           return CustomTransitionPage(
             key: state.pageKey,
             transitionDuration: const Duration(milliseconds: 600),
             reverseTransitionDuration: const Duration(milliseconds: 400),
-            child: const ExperienceDetailScreen(),
+            child: ExperienceDetailScreen(id: id),
             transitionsBuilder: (context, animation, secondaryAnimation, child) {
               final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
               return FadeTransition(opacity: curved, child: child);

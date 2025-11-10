@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/shimmer_container.dart';
-import 'package:travel_assign/features/experience/view/experience_detail_screen.dart';
+import 'package:travel_assign/features/experience_details/view/experience_detail_screen.dart';
 import 'package:travel_assign/features/experience/view/widgets/experience_card.dart';
 import 'package:travel_assign/features/saved_experiences/bloc/saved_eperience_states.dart';
 import 'package:travel_assign/features/saved_experiences/bloc/saved_experience_cubit.dart';
