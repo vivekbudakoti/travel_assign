@@ -29,6 +29,7 @@ class ExperienceCard extends StatelessWidget {
               Align(
                 alignment: AlignmentGeometry.bottomCenter,
                 child: ExperienceCardFooter(
+                  expId: data.id ?? "",
                   interests: data.interests?.map((e) => e.title ?? "").toList() ?? [],
                   bottomTileTitle: data.title ?? "",
                   bottomTileSubText: data.shortDescription ?? "",

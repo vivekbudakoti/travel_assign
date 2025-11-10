@@ -93,7 +93,7 @@ class _ExperienceDetailScreenState extends State<_ExperienceDetailScreen> {
                                 style: context.textTheme.labelLarge?.copyWith(color: AppColors.secondaryText),
                               ),
                               8.verticalSizedBox,
-                              InterestsRow(data: data.interests ?? []),
+                              InterestsRow(data: data.interests ?? [], expId: widget.id),
                               12.verticalSizedBox,
                               Text(data.fullDescription ?? "", style: context.textTheme.labelLarge),
                               context.viewPadding.bottom.verticalSizedBox,

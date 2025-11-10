@@ -4,7 +4,8 @@ import 'package:travel_assign/features/onboarding/model/interests_model.dart';
 
 class InterestsRow extends StatelessWidget {
   final List<InterestsModel> data;
-  const InterestsRow({super.key, required this.data});
+  final String expId;
+  const InterestsRow({super.key, required this.data, required this.expId});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +14,14 @@ class InterestsRow extends StatelessWidget {
         data.length,
         (index) => Container(
           padding: EdgeInsets.only(right: 8),
-          child: InterestOption(
-            imageUrl: data[index].imageUrl ?? "",
-            isSelected: false,
-            onTap: () {},
-            title: data[index].title ?? "",
+          child: Hero(
+            tag: ((data[index].title ?? "") + expId),
+            child: InterestOption(
+              imageUrl: data[index].imageUrl ?? "",
+              isSelected: false,
+              onTap: () {},
+              title: data[index].title ?? "",
+            ),
           ),
         ),
       ),
