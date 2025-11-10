@@ -7,11 +7,15 @@ class ExperienceDetailsCubit extends Cubit<ExperienceDetailsState> {
 
   Future<void> getDetails({required String id}) async {
     emit(ExperienceDetailsLoadingState());
-    final data = await ExperienceDetailsRepo().getDetails(id: id);
-    if (data != null) {
-      emit(ExperienceDetailsSuccessState(experienceData: data));
-    } else {
-      emit(ExperienceDetailsErrorState(message: "No data found"));
+    try {
+      final data = await ExperienceDetailsRepo().getDetails(id: id);
+      if (data != null) {
+        emit(ExperienceDetailsSuccessState(experienceData: data));
+      } else {
+        emit(ExperienceDetailsErrorState(message: "No data found"));
+      }
+    } catch (e) {
+      emit(ExperienceDetailsErrorState(message: "Something went wrong"));
     }
   }
 }

@@ -6,5 +6,10 @@
   "select_intrests": "Select your intrests",
   "help_us_intrests" : "Help us know you better — choose at least 2 interests.",
   "continue_text" : "Continue",
-  "saving" : "Saving..."
+  "saving" : "Saving...",
+  "no_data_found" : "No Data Found!",
+  "working_on_it" : "We are working on it",
+  "no_saved_exp" : "No Saved Experiences",
+  "save_exp_to_see" : "Save experiences to see them here.",
+  "something_went_wrong" : "Something went wrong"
   }

@@ -10,7 +10,6 @@ import 'package:travel_assign/core/widgets/shimmer_container.dart';
 import 'package:travel_assign/features/app/bloc/theme_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/features/experience/bloc/experience_state.dart';
-import 'package:travel_assign/features/experience_details/view/experience_detail_screen.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_cubit.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/features/saved_experiences/view/saved_experiences_screen.dart';
@@ -143,18 +142,14 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                         ? Center(child: Text("No experiences found 😕", style: context.textTheme.bodyLarge))
                         : GridView.builder(
                             padding: EdgeInsets.only(left: 16, right: 16, bottom: context.viewPadding.bottom + 16),
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                              childAspectRatio: 16 / 9,
-                            ),
+                            gridDelegate: CommonUtil.experienceGridDelegate,
                             itemCount: state.experienceData.length,
                             itemBuilder: (context, index) {
                               final data = state.experienceData[index];
                               return ExperienceCard(
                                 data: data,
-                                onTap: () => CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? ""),
+                                onTap: () =>
+                                    CommonUtil().navigateToExperienceDetail(context: context, id: data.id ?? ""),
                               );
                             },
                           ),

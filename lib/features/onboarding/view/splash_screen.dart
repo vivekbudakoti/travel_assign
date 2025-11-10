@@ -4,7 +4,6 @@ import 'package:travel_assign/core/routes/router.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
-import 'package:travel_assign/features/experience/view/experience_screen.dart';
 import 'package:travel_assign/features/onboarding/view/interest_screen.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 

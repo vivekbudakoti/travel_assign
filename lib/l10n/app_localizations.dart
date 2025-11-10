@@ -134,6 +134,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saving...'**
   String get saving;
+
+  /// No description provided for @no_data_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No Data Found!'**
+  String get no_data_found;
+
+  /// No description provided for @working_on_it.
+  ///
+  /// In en, this message translates to:
+  /// **'We are working on it'**
+  String get working_on_it;
+
+  /// No description provided for @no_saved_exp.
+  ///
+  /// In en, this message translates to:
+  /// **'No Saved Experiences'**
+  String get no_saved_exp;
+
+  /// No description provided for @save_exp_to_see.
+  ///
+  /// In en, this message translates to:
+  /// **'Save experiences to see them here.'**
+  String get save_exp_to_see;
+
+  /// No description provided for @something_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get something_went_wrong;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -28,4 +28,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saving => 'Saving...';
+
+  @override
+  String get no_data_found => 'No Data Found!';
+
+  @override
+  String get working_on_it => 'We are working on it';
+
+  @override
+  String get no_saved_exp => 'No Saved Experiences';
+
+  @override
+  String get save_exp_to_see => 'Save experiences to see them here.';
+
+  @override
+  String get something_went_wrong => 'Something went wrong';
 }

@@ -52,16 +52,14 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                   ),
                   if (state is SavedEperienceLoadedState)
                     (state.experienceData.isEmpty)
-                        ? NoDataWidget(title: "No Saved Experiences", subTitle: "Save experiences to see them here.")
+                        ? PlaceHolderStateWidget(
+                            title: context.l10n.no_saved_exp,
+                            subTitle: context.l10n.save_exp_to_see,
+                          )
                         : Expanded(
                             child: GridView.builder(
                               padding: EdgeInsets.zero,
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1,
-                                crossAxisSpacing: 10,
-                                mainAxisSpacing: 10,
-                                childAspectRatio: 16 / 9,
-                              ),
+                              gridDelegate: CommonUtil.experienceGridDelegate,
                               itemCount: state.experienceData.length,
                               itemBuilder: (context, index) {
                                 final data = state.experienceData[index];

@@ -4,11 +4,12 @@ import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 
-class NoDataWidget extends StatelessWidget {
+class PlaceHolderStateWidget extends StatelessWidget {
   final String title;
   final String? subTitle;
+  final bool isError;
 
-  const NoDataWidget({super.key, required this.title, this.subTitle});
+  const PlaceHolderStateWidget({super.key, required this.title, this.subTitle, this.isError = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class NoDataWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppAssetImage(imagePath: Assets.icons.noData, height: 100),
+            (isError) ? Icon(Icons.error, size: 80) : AppAssetImage(imagePath: Assets.icons.noData, height: 100),
             12.verticalSizedBox,
             Text(title, style: context.textTheme.headlineMedium),
             2.verticalSizedBox,
