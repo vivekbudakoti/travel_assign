@@ -3,7 +3,7 @@ import 'package:travel_assign/core/routes/router.dart';
 import 'package:travel_assign/features/experience/view/experience_screen.dart';
 import 'package:travel_assign/features/onboarding/bloc/interest_state.dart';
 import 'package:travel_assign/features/onboarding/model/interests_model.dart';
-import 'package:travel_assign/features/onboarding/repository/repo.dart';
+import 'package:travel_assign/features/onboarding/repository/interest_repo.dart';
 
 class InterestCubit extends Cubit<InterestState> {
   InterestCubit() : super(InterstInitalState());

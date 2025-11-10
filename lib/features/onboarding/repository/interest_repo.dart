@@ -1,4 +1,4 @@
-import 'package:travel_assign/features/onboarding/data/data.dart';
+import 'package:travel_assign/features/onboarding/data/interest_data.dart';
 import 'package:travel_assign/features/onboarding/model/interests_model.dart';
 
 class InterestRepo {

@@ -47,7 +47,7 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                               icon: Icon(Icons.arrow_back),
                             ),
                             16.horizontalSizedBox,
-                            Text("Saved Experiences", style: context.textTheme.headlineSmall),
+                            Text(context.l10n.saved_experiences, style: context.textTheme.headlineSmall),
                           ],
                         ),
                         24.verticalSizedBox,

@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Retry'**
   String get retry;
+
+  /// No description provided for @saved_experiences.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Experiences'**
+  String get saved_experiences;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

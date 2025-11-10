@@ -1,5 +1,5 @@
 import 'package:travel_assign/features/experience/model/experience_data_model.dart';
-import 'package:travel_assign/features/saved_experiences/data.dart';
+import 'package:travel_assign/features/saved_experiences/data/data.dart';
 
 class SavedExperienceRepo {
   final SavedExperiencesData dataSource = SavedExperiencesLocalData();

@@ -12,5 +12,6 @@
   "no_saved_exp" : "No Saved Experiences",
   "save_exp_to_see" : "Save experiences to see them here.",
   "something_went_wrong" : "Something went wrong",
-   "retry" : "Retry"
+   "retry" : "Retry",
+   "saved_experiences" : "Saved Experiences"
   }

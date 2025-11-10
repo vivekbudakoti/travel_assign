@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_assign/features/experience/bloc/experience_state.dart';
-import 'package:travel_assign/features/experience/repository/repo.dart';
-import 'package:travel_assign/features/saved_experiences/repo/repo.dart';
+import 'package:travel_assign/features/experience/repository/experience_repo.dart';
+import 'package:travel_assign/features/saved_experiences/repo/saved_experience_repo.dart';
 
 class ExperienceCubit extends Cubit<ExperienceState> {
   ExperienceCubit() : super(ExperienceInitalState());
