@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/modules/experience/view/widgets/transluent_circle_avatar.dart';
-import 'package:travel_assign/modules/saved_experiences/repo/saved_experience_repo.dart';
 
 class CircularHeart extends StatefulWidget {
   final bool? isSelected;
   final String id;
-  final Function(bool isSaved) onToggle;
-  const CircularHeart({super.key, this.isSelected = false, required this.id, required this.onToggle});
+  final Function(bool isSaved)? onToggle;
+  final Future<bool> Function(String id)? onSaveToggle;
+  const CircularHeart({super.key, this.isSelected = false, required this.id, this.onToggle, this.onSaveToggle});
 
   @override
   State<CircularHeart> createState() => _CircularHeartState();
@@ -42,19 +42,20 @@ class _CircularHeartState extends State<CircularHeart> {
         setState(() {
           _isSaving = true;
         });
+
         bool status = false;
-        final id = widget.id;
-        if (!_isSelected) {
-          status = await SavedExperienceRepo.instance.saveExperiences(id: id);
-        } else {
-          status = await SavedExperienceRepo.instance.removeSavedExperiences(id: id);
+        if (widget.onSaveToggle != null) {
+          status = await widget.onSaveToggle!(widget.id);
         }
+
         if (status) {
           _isSelected = !_isSelected;
-          widget.onToggle(_isSelected);
+          widget.onToggle?.call(_isSelected);
         }
-        _isSaving = false;
-        setState(() {});
+
+        setState(() {
+          _isSaving = false;
+        });
       },
       child: _isSaving
           ? const CircularProgressIndicator(strokeWidth: 2)

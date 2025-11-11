@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/core/widgets/swipe_to_toggle.dart';
+import 'package:travel_assign/modules/experience/bloc/experience_cubit.dart';
 import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
 import 'package:travel_assign/modules/experience/view/widgets/circular_heart.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_card_footer.dart';
 import 'package:travel_assign/modules/experience/view/widgets/location_chip.dart';
-import 'package:travel_assign/modules/saved_experiences/repo/saved_experience_repo.dart';
 
 class ExperienceCard extends StatefulWidget {
   final VoidCallback onTap;
   final ExperienceDataModel data;
   final bool showTutorial;
   final void Function()? onHeratTapCallBack;
+  final Future<bool> Function(String id)? onSaveToggle;
   const ExperienceCard({
     super.key,
     required this.onTap,
     required this.data,
     this.onHeratTapCallBack,
     this.showTutorial = false,
+    this.onSaveToggle,
   });
 
   @override
@@ -36,19 +39,23 @@ class _ExperienceCardState extends State<ExperienceCard> {
         setState(() {
           _isSaving = true;
         });
+
         bool status = false;
-        final id = widget.data.id ?? "";
-        if (!widget.data.isSaved) {
-          status = await SavedExperienceRepo.instance.saveExperiences(id: id);
+        if (widget.onSaveToggle != null) {
+          status = await widget.onSaveToggle!(widget.data.id ?? "");
         } else {
-          status = await SavedExperienceRepo.instance.removeSavedExperiences(id: id);
+          // Fallback to ExperienceCubit for backward compatibility
+          final experienceCubit = context.read<ExperienceCubit>();
+          status = await experienceCubit.toggleSaveExperience(id: widget.data.id ?? "");
         }
+
         if (status) {
-          widget.data.isSaved = !widget.data.isSaved;
           widget.onHeratTapCallBack?.call();
         }
-        _isSaving = false;
-        setState(() {});
+
+        setState(() {
+          _isSaving = false;
+        });
       },
       overlay: _CircularHeartWidget(widget: widget, isFromSwap: true),
       child: GestureDetector(
@@ -103,9 +110,14 @@ class _CircularHeartWidget extends StatelessWidget {
       isSelected: (isFromSwap) ? !widget.data.isSaved : widget.data.isSaved,
       id: widget.data.id ?? "",
       onToggle: (isSaved) {
-        widget.data.isSaved = isSaved;
         widget.onHeratTapCallBack?.call();
       },
+      onSaveToggle:
+          widget.onSaveToggle ??
+          (id) async {
+            final experienceCubit = context.read<ExperienceCubit>();
+            return await experienceCubit.toggleSaveExperience(id: id);
+          },
     );
   }
 }

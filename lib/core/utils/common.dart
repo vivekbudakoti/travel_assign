@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
+import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
 import 'package:travel_assign/modules/experience_details/view/experience_detail_screen.dart';
+import 'package:travel_assign/modules/saved_experiences/repo/saved_experience_repo.dart';
 
 class CommonUtil {
   static CommonUtil? _instance;
@@ -56,5 +58,30 @@ class CommonUtil {
       return extra[RouteConstants.onBackSuccess];
     }
     return null;
+  }
+
+  /// Reusable save/unsave functionality for experiences
+  /// Returns true if operation was successful, false otherwise
+  Future<bool> toggleExperienceSave({required String id, required List<ExperienceDataModel> experienceList}) async {
+    final experienceIndex = experienceList.indexWhere((exp) => exp.id == id);
+
+    if (experienceIndex != -1) {
+      final experience = experienceList[experienceIndex];
+      final currentSaveStatus = experience.isSaved;
+
+      bool status = false;
+      if (!currentSaveStatus) {
+        status = await SavedExperienceRepo.instance.saveExperiences(id: id);
+      } else {
+        status = await SavedExperienceRepo.instance.removeSavedExperiences(id: id);
+      }
+
+      if (status) {
+        // Toggle the save status
+        experience.isSaved = !currentSaveStatus;
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -88,8 +88,11 @@ class _ExperienceDetailScreenState extends State<_ExperienceDetailScreen> {
                                 id: state.experienceData.id ?? "",
                                 isSelected: state.experienceData.isSaved,
                                 onToggle: (isSaved) {
-                                  state.experienceData.isSaved = isSaved;
                                   if (!_isSavedPrefChanged) _isSavedPrefChanged = true;
+                                },
+                                onSaveToggle: (id) async {
+                                  final cubit = context.read<ExperienceDetailsCubit>();
+                                  return await cubit.toggleSaveExperience(id: id);
                                 },
                               ),
                           ],

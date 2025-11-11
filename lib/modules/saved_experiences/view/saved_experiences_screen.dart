@@ -83,6 +83,10 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                                   onHeratTapCallBack: () {
                                     _toggleSavedPrefChanged();
                                   },
+                                  onSaveToggle: (id) async {
+                                    final cubit = context.read<SavedExperienceCubit>();
+                                    return await cubit.toggleSaveExperience(id: id);
+                                  },
                                   onTapCard: (data) {
                                     CommonUtil.instance.navigateToExperienceDetail(
                                       context: context,
