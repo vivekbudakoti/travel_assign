@@ -16,12 +16,14 @@ class ExperienceCard extends StatefulWidget {
   final ExperienceDataModel data;
   final bool showTutorial;
   final void Function()? onHeratTapCallBack;
+  final VoidCallback? onAnimationComplete;
   const ExperienceCard({
     super.key,
     required this.onTap,
     required this.data,
     this.onHeratTapCallBack,
     this.showTutorial = false,
+    this.onAnimationComplete,
   });
 
   @override
@@ -50,6 +52,7 @@ class _ExperienceCardState extends State<ExperienceCard> {
           tag: "${HeroConstants.experienceCard}${widget.data.id ?? ""}",
           child: SwipeToToggle(
             showTutorial: widget.showTutorial,
+            onAnimationComplete: widget.onAnimationComplete,
             onToggle: () async {
               // Trigger HeartCubit to handle the save/unsave logic for swipe
               context.read<HeartCubit>().toggleSave(

@@ -28,6 +28,7 @@ class ExperienceScreen extends StatefulWidget {
 class _ExperienceScreenState extends State<ExperienceScreen> {
   final expereinceBloc = ExperienceCubit();
   List<String> _selectedInterests = [];
+  bool _isTutorialAnimated = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -100,7 +101,10 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                           ? PlaceHolderStateWidget(title: context.l10n.no_data_found)
                           : ExperienceGridview(
                               experienceData: state.experienceData,
-                              showTutorial: true,
+                              onAnimationComplete: () {
+                                if (!_isTutorialAnimated) _isTutorialAnimated = true;
+                              },
+                              showTutorial: !_isTutorialAnimated,
                               onTapCard: (data) {
                                 CommonUtil.instance.navigateToExperienceDetail(
                                   context: context,

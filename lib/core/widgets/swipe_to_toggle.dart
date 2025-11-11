@@ -7,6 +7,7 @@ class SwipeToToggle extends StatefulWidget {
   final AxisDirection direction;
   final double triggerFraction;
   final bool showTutorial;
+  final VoidCallback? onAnimationComplete;
 
   const SwipeToToggle({
     super.key,
@@ -16,6 +17,7 @@ class SwipeToToggle extends StatefulWidget {
     this.direction = AxisDirection.left,
     this.triggerFraction = 0.5,
     this.showTutorial = false,
+    this.onAnimationComplete,
   });
 
   @override
@@ -35,10 +37,11 @@ class _SwipeToToggleState extends State<SwipeToToggle> with SingleTickerProvider
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
-
     if (widget.showTutorial) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _runTutorialAnimation();
+        if (!_tutorialDone) {
+          _runTutorialAnimation();
+        }
       });
     }
   }
@@ -117,8 +120,8 @@ class _SwipeToToggleState extends State<SwipeToToggle> with SingleTickerProvider
       ..forward(from: 0);
 
     await Future.delayed(const Duration(milliseconds: 700));
+    widget.onAnimationComplete?.call();
     if (!mounted) return;
-
     setState(() {
       _isTutorialRunning = false;
       _tutorialDone = true;

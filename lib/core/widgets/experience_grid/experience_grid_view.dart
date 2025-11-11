@@ -10,6 +10,8 @@ class ExperienceGridview extends StatelessWidget {
   final EdgeInsets? padding;
   final void Function()? onHeratTapCallBack;
   final bool showTutorial;
+  final VoidCallback? onAnimationComplete;
+
   const ExperienceGridview({
     super.key,
     required this.experienceData,
@@ -17,6 +19,7 @@ class ExperienceGridview extends StatelessWidget {
     this.padding,
     this.onHeratTapCallBack,
     this.showTutorial = false,
+    this.onAnimationComplete,
   });
 
   @override
@@ -28,6 +31,7 @@ class ExperienceGridview extends StatelessWidget {
       itemBuilder: (context, index) {
         final data = experienceData[index];
         return ExperienceCard(
+          onAnimationComplete: onAnimationComplete,
           data: data,
           showTutorial: (showTutorial) ? index == 0 : false,
           onHeratTapCallBack: onHeratTapCallBack,
