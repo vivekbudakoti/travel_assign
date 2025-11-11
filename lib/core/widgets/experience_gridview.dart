@@ -9,12 +9,14 @@ class ExperienceGridview extends StatelessWidget {
   final Function(ExperienceDataModel data)? onTapCard;
   final EdgeInsets? padding;
   final void Function()? onHeratTapCallBack;
+  final bool showTutorial;
   const ExperienceGridview({
     super.key,
     required this.experienceData,
     this.onTapCard,
     this.padding,
     this.onHeratTapCallBack,
+    this.showTutorial = false,
   });
 
   @override
@@ -27,6 +29,7 @@ class ExperienceGridview extends StatelessWidget {
         final data = experienceData[index];
         return ExperienceCard(
           data: data,
+          showTutorial: (showTutorial) ? index == 0 : false,
           onHeratTapCallBack: onHeratTapCallBack,
           onTap: () {
             onTapCard?.call(data);

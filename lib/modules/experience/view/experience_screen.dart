@@ -100,6 +100,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                           ? PlaceHolderStateWidget(title: context.l10n.no_data_found)
                           : ExperienceGridview(
                               experienceData: state.experienceData,
+                              showTutorial: true,
                               onTapCard: (data) {
                                 CommonUtil.instance.navigateToExperienceDetail(
                                   context: context,
