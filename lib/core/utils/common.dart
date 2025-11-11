@@ -8,16 +8,12 @@ import 'package:travel_assign/modules/saved_experiences/repo/saved_experience_re
 
 class CommonUtil {
   static CommonUtil? _instance;
-  late final SharedPrefUtil _pref;
 
-  CommonUtil._internal() {
-    _pref = SharedPrefUtil();
-  }
-
+  CommonUtil._internal();
   static CommonUtil get instance => _instance ??= CommonUtil._internal();
 
   Map<String, Map<String, dynamic>> getSavedExpFromSharedPref() {
-    final savedData = _pref.getString(SharedPreferencesConstants.savedExperiences);
+    final savedData = SharedPrefUtil().getString(SharedPreferencesConstants.savedExperiences);
     if (savedData == null || savedData.isEmpty) return {};
 
     try {

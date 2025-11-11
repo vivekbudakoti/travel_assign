@@ -13,4 +13,6 @@ class AppColors {
   static const Color transperent = Colors.transparent;
   static const Color graniteGray = Color(0xFF64646E);
   static final Color primaryDarkWithAlpha30 = AppColors.primaryDark.withValues(alpha: 0.3);
+  static final Color grey = Colors.grey;
+
 }

@@ -5,10 +5,10 @@ import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
 import 'package:travel_assign/modules/onboarding/bloc/onboarding_cubit.dart';
-import 'package:travel_assign/modules/onboarding/bloc/interest_state.dart';
+import 'package:travel_assign/modules/onboarding/bloc/onboarding_state.dart';
 import 'package:travel_assign/modules/onboarding/view/widgets/interest_gridview.dart';
 import 'package:travel_assign/modules/onboarding/view/widgets/interest_loading.dart';
-import 'package:travel_assign/modules/onboarding/view/widgets/intrerest_bottom.dart';
+import 'package:travel_assign/modules/onboarding/view/widgets/onboarding_bottom.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -34,7 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     padding: EdgeInsets.only(bottom: context.viewPadding.bottom),
                     child: StatefulBuilder(
                       builder: (context, setState) {
-                        return IntrerestBottom(
+                        return OnboardingBottom(
                           onContinue: () async {
                             await _onTapContinue(setState, context);
                           },

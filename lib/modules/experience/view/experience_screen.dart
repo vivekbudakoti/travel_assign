@@ -14,7 +14,7 @@ import 'package:travel_assign/modules/experience/view/widgets/experience_screen_
 import 'package:travel_assign/modules/experience/view/widgets/experience_top_bar.dart';
 import 'package:travel_assign/modules/experience/view/widgets/interest_row_shimmer.dart';
 import 'package:travel_assign/modules/onboarding/bloc/onboarding_cubit.dart';
-import 'package:travel_assign/modules/onboarding/bloc/interest_state.dart';
+import 'package:travel_assign/modules/onboarding/bloc/onboarding_state.dart';
 import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
 import 'package:travel_assign/modules/saved_experiences/view/saved_experiences_screen.dart';
 

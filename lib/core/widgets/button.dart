@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 
 class AppButton extends StatelessWidget {
@@ -34,16 +35,16 @@ class AppButton extends StatelessWidget {
         onPressed: isDisabled ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: buttonColor,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           padding: padding,
           elevation: 2,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
           disabledBackgroundColor: context.colorScheme.onSurface.withValues(alpha: 0.12),
-          disabledForegroundColor: Colors.white.withValues(alpha: 0.38),
+          disabledForegroundColor: AppColors.white.withValues(alpha: 0.38),
         ),
         child: Text(
           text,
-          style: context.textTheme.labelLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+          style: context.textTheme.labelLarge?.copyWith(color: AppColors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );

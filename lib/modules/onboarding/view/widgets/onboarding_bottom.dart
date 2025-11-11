@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/button.dart';
 
-class IntrerestBottom extends StatelessWidget {
+class OnboardingBottom extends StatelessWidget {
   final VoidCallback onContinue;
   final bool isDisabled;
-  final String lable ;
+  final String lable;
 
-  const IntrerestBottom({super.key, required this.onContinue, this.isDisabled = false, required this.lable});
+  const OnboardingBottom({super.key, required this.onContinue, this.isDisabled = false, required this.lable});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,7 @@ class IntrerestBottom extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           16.verticalSizedBox,
-          AppButton(
-            text: lable,
-            onPressed: onContinue,
-            width: double.maxFinite,
-            isDisabled: isDisabled,
-          ),
+          AppButton(text: lable, onPressed: onContinue, width: double.maxFinite, isDisabled: isDisabled),
         ],
       ),
     );
