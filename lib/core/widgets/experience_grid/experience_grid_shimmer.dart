@@ -3,9 +3,9 @@ import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/shimmer_container.dart';
 
-class ExperienceListShimmer extends StatelessWidget {
+class ExperienceGridShimmer extends StatelessWidget {
   final EdgeInsets? padding;
-  const ExperienceListShimmer({super.key, this.padding});
+  const ExperienceGridShimmer({super.key, this.padding});
 
   @override
   Widget build(BuildContext context) {

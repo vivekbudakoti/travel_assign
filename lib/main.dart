@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
-import 'package:travel_assign/modules/app/view/view.dart';
+import 'package:travel_assign/modules/app/view/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

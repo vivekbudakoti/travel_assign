@@ -26,3 +26,7 @@ extension MediQueryExtension on BuildContext {
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
   double get height => MediaQuery.of(this).size.height;
 }
+
+extension StringNullEmptyExtension on String? {
+  bool get isNotNullOrEmpty => this != null && this!.trim().isNotEmpty;
+}

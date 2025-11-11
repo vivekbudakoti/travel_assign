@@ -1,5 +1,5 @@
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
-import 'package:travel_assign/modules/experience_details/data/experience_data.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
+import 'package:travel_assign/modules/experience_details/repo/data/experience_data.dart';
 
 class ExperienceDetailsRepo {
   static ExperienceDetailsRepo? _instance;
@@ -11,7 +11,7 @@ class ExperienceDetailsRepo {
 
   static ExperienceDetailsRepo get instance => _instance ??= ExperienceDetailsRepo._internal();
 
-  Future<ExperienceDataModel?> getDetails({required String id}) async {
-    return await dataSource.getDetails(id);
+  Future<ExperienceDataModel?> getDetails({String? id}) async {
+    return await dataSource.getDetails(id: id);
   }
 }

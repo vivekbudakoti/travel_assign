@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/modules/experience/view/widgets/interest_option.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 
 class ExperienceScreenInterestList extends StatelessWidget {
   final List<InterestsModel> dataModel;

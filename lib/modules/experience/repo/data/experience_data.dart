@@ -1,6 +1,6 @@
 import 'package:travel_assign/core/constants/raw_json.dart';
 import 'package:travel_assign/core/utils/common.dart';
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
 
 abstract class ExperienceData {
   Future<List<ExperienceDataModel>> getExperiences({List<String> interests = const []});

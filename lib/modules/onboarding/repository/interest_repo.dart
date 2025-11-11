@@ -1,5 +1,5 @@
-import 'package:travel_assign/modules/onboarding/data/interest_data.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/modules/onboarding/repository/data/interest_data.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 
 class InterestRepo {
   static InterestRepo? _instance;

@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_assign/core/routes/router.dart';
 import 'package:travel_assign/modules/experience/view/experience_screen.dart';
 import 'package:travel_assign/modules/onboarding/bloc/onboarding_state.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 import 'package:travel_assign/modules/onboarding/repository/interest_repo.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {

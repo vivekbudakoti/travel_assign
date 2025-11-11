@@ -5,8 +5,8 @@ import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
 import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/core/widgets/experience_gridview.dart';
-import 'package:travel_assign/core/widgets/experience_list_shimmer.dart';
+import 'package:travel_assign/core/widgets/experience_grid/experience_grid_view.dart';
+import 'package:travel_assign/core/widgets/experience_grid/experience_grid_shimmer.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
 import 'package:travel_assign/modules/saved_experiences/bloc/saved_eperience_states.dart';
 import 'package:travel_assign/modules/saved_experiences/bloc/saved_experience_cubit.dart';
@@ -100,7 +100,7 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                       else if (state is SavedEperienceLoadingState)
                         PlaceHolderStateWidget(title: context.l10n.something_went_wrong, isError: true)
                       else
-                        ExperienceListShimmer(padding: EdgeInsets.zero),
+                        ExperienceGridShimmer(padding: EdgeInsets.zero),
                     ],
                   ),
                 ),

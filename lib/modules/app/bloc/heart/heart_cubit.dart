@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_assign/core/utils/common.dart';
-import 'package:travel_assign/modules/app/bloc/heart_state.dart';
+import 'package:travel_assign/modules/app/bloc/heart/heart_state.dart';
 
 class HeartCubit extends Cubit<HeartState> {
   HeartCubit() : super(HeartInitialState());

@@ -1,5 +1,5 @@
 import 'package:travel_assign/core/utils/parser.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 
 class ExperienceDataModel {
   final String? id;

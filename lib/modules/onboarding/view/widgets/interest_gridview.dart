@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/utils/common.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 import 'package:travel_assign/modules/onboarding/view/widgets/intrerest_card.dart';
 
 class InterestGridview extends StatelessWidget {

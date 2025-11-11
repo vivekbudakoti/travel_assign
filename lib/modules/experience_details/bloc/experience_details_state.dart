@@ -1,4 +1,4 @@
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
 
 abstract class ExperienceDetailsState {}
 

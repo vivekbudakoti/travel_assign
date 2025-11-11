@@ -17,7 +17,7 @@ import 'package:travel_assign/modules/experience_details/view/widgets/experience
 import 'package:travel_assign/modules/experience_details/view/widgets/interests_row.dart';
 
 class ExperienceDetailScreen extends StatelessWidget {
-  final String id;
+  final String? id;
   final Object? extra;
   const ExperienceDetailScreen({super.key, required this.id, this.extra});
 
@@ -32,7 +32,7 @@ class ExperienceDetailScreen extends StatelessWidget {
 }
 
 class _ExperienceDetailScreen extends StatefulWidget {
-  final String id;
+  final String? id;
   final Object? extra;
   const _ExperienceDetailScreen({required this.id, this.extra});
 
@@ -119,7 +119,7 @@ class _ExperienceDetailScreenState extends State<_ExperienceDetailScreen> {
                                   style: context.textTheme.labelLarge?.copyWith(color: AppColors.secondaryText),
                                 ),
                                 8.verticalSizedBox,
-                                InterestsRow(data: state.experienceData.interests ?? [], expId: widget.id),
+                                InterestsRow(data: state.experienceData.interests ?? []),
                                 12.verticalSizedBox,
                                 Text(state.experienceData.fullDescription ?? "", style: context.textTheme.labelLarge),
                                 context.viewPadding.bottom.verticalSizedBox,

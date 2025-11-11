@@ -1,4 +1,4 @@
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 
 abstract class OnboardingState {}
 

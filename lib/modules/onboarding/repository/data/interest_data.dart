@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/constants/raw_json.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 
 abstract class InterestData {
   Future<List<InterestsModel>> getInterests();

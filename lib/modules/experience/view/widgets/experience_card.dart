@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_assign/core/constants/constants.dart';
-import 'package:travel_assign/modules/app/bloc/heart_cubit.dart';
+import 'package:travel_assign/modules/app/bloc/heart/heart_cubit.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/core/widgets/swipe_to_toggle.dart';
-import 'package:travel_assign/modules/app/bloc/heart_state.dart';
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
+import 'package:travel_assign/modules/app/bloc/heart/heart_state.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
 import 'package:travel_assign/modules/experience/view/widgets/circular_heart.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_card_footer.dart';
 import 'package:travel_assign/modules/experience/view/widgets/location_chip.dart';

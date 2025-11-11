@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travel_assign/modules/app/bloc/heart_cubit.dart';
+import 'package:travel_assign/modules/app/bloc/heart/heart_cubit.dart';
 
 /// Global provider for HeartCubit that ensures all screens share the same instance
 class GlobalHeartProvider extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
-import 'package:travel_assign/modules/saved_experiences/data/saved_experiences_data.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
+import 'package:travel_assign/modules/saved_experiences/repo/data/saved_experiences_data.dart';
 
 class SavedExperienceRepo {
   static SavedExperienceRepo? _instance;

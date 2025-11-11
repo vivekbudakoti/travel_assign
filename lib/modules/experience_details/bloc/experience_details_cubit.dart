@@ -5,7 +5,7 @@ import 'package:travel_assign/modules/experience_details/repo/experience_repo.da
 class ExperienceDetailsCubit extends Cubit<ExperienceDetailsState> {
   ExperienceDetailsCubit() : super(ExperienceDetailsInitialState());
 
-  Future<void> getDetails({required String id}) async {
+  Future<void> getDetails({ String? id}) async {
     emit(ExperienceDetailsLoadingState());
     try {
       final data = await ExperienceDetailsRepo.instance.getDetails(id: id);

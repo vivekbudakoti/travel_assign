@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:travel_assign/modules/experience/view/widgets/interest_option.dart';
-import 'package:travel_assign/modules/onboarding/model/interests_model.dart';
+import 'package:travel_assign/core/model/interests_model.dart';
 
 class InterestsRow extends StatelessWidget {
   final List<InterestsModel> data;
-  final String expId;
-  const InterestsRow({super.key, required this.data, required this.expId});
+  const InterestsRow({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

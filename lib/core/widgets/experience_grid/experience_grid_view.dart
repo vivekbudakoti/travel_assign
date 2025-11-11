@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_card.dart';
 
 class ExperienceGridview extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/constants/raw_json.dart';
 import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/shared_pref_util.dart';
-import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
+import 'package:travel_assign/core/model/experience_data_model.dart';
 
 abstract class SavedExperiencesData {
   Future<bool> saveExperiences({required String id});

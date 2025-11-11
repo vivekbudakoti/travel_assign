@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/app_name.dart';
 import 'package:travel_assign/core/widgets/asset_image.dart';
-import 'package:travel_assign/modules/app/bloc/theme_cubit.dart';
+import 'package:travel_assign/modules/app/bloc/theme/theme_cubit.dart';
 import 'package:travel_assign/modules/experience/view/widgets/top_icon.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 
