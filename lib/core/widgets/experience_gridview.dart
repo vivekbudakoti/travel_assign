@@ -10,7 +10,6 @@ class ExperienceGridview extends StatelessWidget {
   final EdgeInsets? padding;
   final void Function()? onHeratTapCallBack;
   final bool showTutorial;
-  final Future<bool> Function(String id)? onSaveToggle;
   const ExperienceGridview({
     super.key,
     required this.experienceData,
@@ -18,7 +17,6 @@ class ExperienceGridview extends StatelessWidget {
     this.padding,
     this.onHeratTapCallBack,
     this.showTutorial = false,
-    this.onSaveToggle,
   });
 
   @override
@@ -33,7 +31,6 @@ class ExperienceGridview extends StatelessWidget {
           data: data,
           showTutorial: (showTutorial) ? index == 0 : false,
           onHeratTapCallBack: onHeratTapCallBack,
-          onSaveToggle: onSaveToggle,
           onTap: () {
             onTapCard?.call(data);
           },
