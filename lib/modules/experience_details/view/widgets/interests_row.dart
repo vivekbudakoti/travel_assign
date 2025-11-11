@@ -14,14 +14,11 @@ class InterestsRow extends StatelessWidget {
         data.length,
         (index) => Container(
           padding: EdgeInsets.only(right: 8),
-          child: Hero(
-            tag: ((data[index].title ?? "") + expId),
-            child: InterestOption(
-              imageUrl: data[index].imageUrl ?? "",
-              isSelected: false,
-              onTap: () {},
-              title: data[index].title ?? "",
-            ),
+          child: InterestOption(
+            imageUrl: data[index].imageUrl ?? "",
+            isSelected: false,
+            onTap: () {},
+            title: data[index].title ?? "",
           ),
         ),
       ),

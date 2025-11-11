@@ -24,7 +24,21 @@ class AppRouter {
         path: SavedExperiencesScreen.routeName,
         builder: (context, state) => SavedExperiencesScreen(extra: state.extra),
       ),
-      GoRoute(path: ExperienceScreen.routeName, builder: (context, state) => const ExperienceScreen()),
+      GoRoute(
+        path: ExperienceScreen.routeName,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            transitionDuration: const Duration(milliseconds: 600),
+            reverseTransitionDuration: const Duration(milliseconds: 400),
+            child: ExperienceScreen(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+              return FadeTransition(opacity: curved, child: child);
+            },
+          );
+        },
+      ),
       GoRoute(
         path: "${ExperienceDetailScreen.routeName}/:id",
         pageBuilder: (context, state) {

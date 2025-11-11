@@ -13,3 +13,9 @@ class AppRoutes {
   static const String experienceDetailScreen = '/experienceDetailScreen';
   static const String savedExperiencesScreen = '/savedExperiencesScreen';
 }
+
+class HeroConstants {
+  static const String experienceCard = 'experienceCard';
+  static const String interestGrid = 'interestGrid';
+
+}

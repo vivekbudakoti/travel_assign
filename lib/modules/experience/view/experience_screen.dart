@@ -72,20 +72,20 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                               }
                             },
                             builder: (context, state) {
-                              switch (state) {
-                                case OnboardingSuccessState():
-                                  return ExperienceScreenInterestList(
+                              return Hero(
+                                tag: HeroConstants.interestGrid,
+                                child: switch (state) {
+                                  OnboardingSuccessState() => ExperienceScreenInterestList(
                                     dataModel: state.data,
                                     onTapListItem: (data) {
                                       _onTapInterestOption(data: data, context: context, state: state);
                                     },
-                                  );
-                                case OnboardingErrorState():
-                                  return SizedBox();
+                                  ),
+                                  OnboardingErrorState() => SizedBox(),
 
-                                default:
-                                  return InterestRowShimmer();
-                              }
+                                  _ => InterestRowShimmer(),
+                                },
+                              );
                             },
                           ),
                         ),

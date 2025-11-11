@@ -82,7 +82,9 @@ class _SwipeToToggleState extends State<SwipeToToggle> with SingleTickerProvider
 
   Future<void> _runTutorialAnimation() async {
     _isTutorialRunning = true;
+
     await Future.delayed(const Duration(milliseconds: 500));
+    if (!mounted) return;
 
     final screenWidth = MediaQuery.of(context).size.width;
     final tutorialDistance = (screenWidth * 0.45) * (_isLeftSwipe ? -1 : 1);
@@ -92,7 +94,7 @@ class _SwipeToToggleState extends State<SwipeToToggle> with SingleTickerProvider
           begin: 0,
           end: tutorialDistance,
         ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubicEmphasized))..addListener(() {
-          setState(() => _dragOffset = _animation!.value);
+          if (mounted) setState(() => _dragOffset = _animation!.value);
         });
 
     _controller
@@ -100,13 +102,14 @@ class _SwipeToToggleState extends State<SwipeToToggle> with SingleTickerProvider
       ..forward(from: 0);
 
     await Future.delayed(const Duration(milliseconds: 700));
+    if (!mounted) return;
 
     _animation =
         Tween<double>(
           begin: tutorialDistance,
           end: 0,
         ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutQuad))..addListener(() {
-          setState(() => _dragOffset = _animation!.value);
+          if (mounted) setState(() => _dragOffset = _animation!.value);
         });
 
     _controller
@@ -114,9 +117,11 @@ class _SwipeToToggleState extends State<SwipeToToggle> with SingleTickerProvider
       ..forward(from: 0);
 
     await Future.delayed(const Duration(milliseconds: 700));
+    if (!mounted) return;
+
     setState(() {
       _isTutorialRunning = false;
-      _tutorialDone = true; // marks tutorial complete
+      _tutorialDone = true;
     });
   }
 

@@ -15,15 +15,12 @@ class InterestsListTiles extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: Wrap(
         children: List.generate(_countIsGreaterThanThree ? 4 : _interestLenght, (index) {
-          return Hero(
-            tag: interests[index] + expId,
-            child: TransluentCard(
-              padding: const EdgeInsets.only(right: 4),
-              takeFullWidth: false,
-              child: Text(
-                (index == 3) ? "+${interests.length - 3}" : interests[index],
-                style: context.textTheme.bodySmall?.copyWith(color: AppColors.white),
-              ),
+          return TransluentCard(
+            padding: const EdgeInsets.only(right: 4),
+            takeFullWidth: false,
+            child: Text(
+              (index == 3) ? "+${interests.length - 3}" : interests[index],
+              style: context.textTheme.bodySmall?.copyWith(color: AppColors.white),
             ),
           );
         }),

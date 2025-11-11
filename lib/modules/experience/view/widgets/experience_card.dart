@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/modules/app/bloc/heart_cubit.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/network_image.dart';
 import 'package:travel_assign/core/widgets/swipe_to_toggle.dart';
+import 'package:travel_assign/modules/app/bloc/heart_state.dart';
 import 'package:travel_assign/modules/experience/model/experience_data_model.dart';
 import 'package:travel_assign/modules/experience/view/widgets/circular_heart.dart';
 import 'package:travel_assign/modules/experience/view/widgets/experience_card_footer.dart';
@@ -44,49 +46,49 @@ class _ExperienceCardState extends State<ExperienceCard> {
           currentSaveStatus = heartState.isSaved;
         }
 
-        return SwipeToToggle(
-          showTutorial: widget.showTutorial,
-          onToggle: () async {
-            // Trigger HeartCubit to handle the save/unsave logic for swipe
-            context.read<HeartCubit>().toggleSave(
-              experienceId: widget.data.id ?? "",
-              currentSaveStatus: currentSaveStatus, // Use the current status from cubit
-            );
+        return Hero(
+          tag: "${HeroConstants.experienceCard}${widget.data.id ?? ""}",
+          child: SwipeToToggle(
+            showTutorial: widget.showTutorial,
+            onToggle: () async {
+              // Trigger HeartCubit to handle the save/unsave logic for swipe
+              context.read<HeartCubit>().toggleSave(
+                experienceId: widget.data.id ?? "",
+                currentSaveStatus: currentSaveStatus, // Use the current status from cubit
+              );
 
-            widget.onHeratTapCallBack?.call();
-          },
-          overlay: _CircularHeartWidget(widget: widget, isFromSwap: true, currentSaveStatus: currentSaveStatus),
-          child: GestureDetector(
-            onTap: widget.onTap,
-            child: Container(
-              height: 250,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: context.theme.scaffoldBackgroundColor,
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Stack(
-                  children: [
-                    Hero(
-                      tag: widget.data.id ?? "",
-                      child: AppNetworkImage(imageUrl: widget.data.thumbnail ?? "", height: 250, fit: BoxFit.cover),
-                    ),
-                    LocationChip(location: widget.data.location ?? ""),
-                    Align(
-                      alignment: AlignmentGeometry.bottomCenter,
-                      child: ExperienceCardFooter(
-                        expId: widget.data.id ?? "",
-                        interests: widget.data.interests?.map((e) => e.title ?? "").toList() ?? [],
-                        bottomTileTitle: widget.data.title ?? "",
-                        bottomTileSubText: widget.data.shortDescription ?? "",
+              widget.onHeratTapCallBack?.call();
+            },
+            overlay: _CircularHeartWidget(widget: widget, isFromSwap: true, currentSaveStatus: currentSaveStatus),
+            child: GestureDetector(
+              onTap: widget.onTap,
+              child: Container(
+                height: 250,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: context.theme.scaffoldBackgroundColor,
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Stack(
+                    children: [
+                      AppNetworkImage(imageUrl: widget.data.thumbnail ?? "", height: 250, fit: BoxFit.cover),
+                      LocationChip(location: widget.data.location ?? ""),
+                      Align(
+                        alignment: AlignmentGeometry.bottomCenter,
+                        child: ExperienceCardFooter(
+                          expId: widget.data.id ?? "",
+                          interests: widget.data.interests?.map((e) => e.title ?? "").toList() ?? [],
+                          bottomTileTitle: widget.data.title ?? "",
+                          bottomTileSubText: widget.data.shortDescription ?? "",
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: _CircularHeartWidget(widget: widget, currentSaveStatus: currentSaveStatus),
-                    ),
-                  ],
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: _CircularHeartWidget(widget: widget, currentSaveStatus: currentSaveStatus),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
