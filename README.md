@@ -2,9 +2,12 @@
 
 A mini Flutter app that showcases a feed of curated travel experiences based on user interests. Users can explore experiences, view details, and save their favorites to a wishlist.
 
-## 🎥 Demo Preview
+## Links
+Demo Video: https://drive.google.com/uc?export=download&id=13WGp8D2SPeqZ2cb3lN7anpuTDipsmnXr
 
-<video src="https://drive.google.com/file/d/13WGp8D2SPeqZ2cb3lN7anpuTDipsmnXr/view?usp=drive_link" width="400" controls autoplay loop muted></video>
+arm64-v8a apk: https://drive.google.com/file/d/1gG_e3KxNe0fiIXATgHJ5P-zihjwG0ZOe/view?usp=drive_link
+
+armeabi-v7a apk: https://drive.google.com/file/d/19lOIDkE5Wgxg8c5yip48VbftwBNSO7q8/view?usp=drive_link
 
 ## Architecture & Structure
 
