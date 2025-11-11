@@ -99,23 +99,89 @@ abstract class AppLocalizations {
   /// **'Travel Assign'**
   String get appTitle;
 
-  /// No description provided for @welcomeText.
+  /// No description provided for @travel.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Travel Assign!'**
-  String get welcomeText;
+  /// **'Travel'**
+  String get travel;
 
-  /// No description provided for @explore.
+  /// No description provided for @assign.
   ///
   /// In en, this message translates to:
-  /// **'Explore Now'**
-  String get explore;
+  /// **'Assign'**
+  String get assign;
 
-  /// No description provided for @discover.
+  /// No description provided for @select_intrests.
   ///
   /// In en, this message translates to:
-  /// **'Discover Destinations'**
-  String get discover;
+  /// **'Select your intrests'**
+  String get select_intrests;
+
+  /// No description provided for @help_us_intrests.
+  ///
+  /// In en, this message translates to:
+  /// **'Help us know you better — choose at least 2 interests.'**
+  String get help_us_intrests;
+
+  /// No description provided for @continue_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continue_text;
+
+  /// No description provided for @saving.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving...'**
+  String get saving;
+
+  /// No description provided for @no_data_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No Data Found!'**
+  String get no_data_found;
+
+  /// No description provided for @working_on_it.
+  ///
+  /// In en, this message translates to:
+  /// **'We are working on it'**
+  String get working_on_it;
+
+  /// No description provided for @no_saved_exp.
+  ///
+  /// In en, this message translates to:
+  /// **'No Saved Experiences'**
+  String get no_saved_exp;
+
+  /// No description provided for @save_exp_to_see.
+  ///
+  /// In en, this message translates to:
+  /// **'Save experiences to see them here.'**
+  String get save_exp_to_see;
+
+  /// No description provided for @something_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get something_went_wrong;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @saved_experiences.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Experiences'**
+  String get saved_experiences;
+
+  /// No description provided for @things_you_will_love.
+  ///
+  /// In en, this message translates to:
+  /// **'Things You will Love:'**
+  String get things_you_will_love;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
