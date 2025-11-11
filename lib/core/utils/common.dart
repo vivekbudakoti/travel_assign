@@ -6,21 +6,27 @@ import 'package:travel_assign/core/utils/shared_pref_util.dart';
 import 'package:travel_assign/modules/experience_details/view/experience_detail_screen.dart';
 
 class CommonUtil {
-  CommonUtil._internal();
-  static final CommonUtil _instance = CommonUtil._internal();
-  factory CommonUtil() => _instance;
+  static CommonUtil? _instance;
+  late final SharedPrefUtil _pref;
+
+  CommonUtil._internal() {
+    _pref = SharedPrefUtil();
+  }
+
+  static CommonUtil get instance => _instance ??= CommonUtil._internal();
 
   Map<String, Map<String, dynamic>> getSavedExpFromSharedPref() {
-    final pref = SharedPrefUtil();
-    final savedData = pref.getString(SharedPreferencesConstants.savedExperiences);
-
+    final savedData = _pref.getString(SharedPreferencesConstants.savedExperiences);
     if (savedData == null || savedData.isEmpty) return {};
 
-    final decoded = jsonDecode(savedData);
+    try {
+      final decoded = jsonDecode(savedData);
+      if (decoded is! Map) return {};
 
-    if (decoded is! Map) return {};
-
-    return decoded.map((key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)));
+      return decoded.map((key, value) => MapEntry(key.toString(), Map<String, dynamic>.from(value as Map)));
+    } catch (_) {
+      return {};
+    }
   }
 
   Future<void> navigateToExperienceDetail({required BuildContext context, String? id, Object? extra}) async {
@@ -44,4 +50,11 @@ class CommonUtil {
         mainAxisSpacing: 10,
         childAspectRatio: 16 / 9,
       );
+
+  Function? getOnBackFromExtra({Object? extra}) {
+    if (extra is Map && extra[RouteConstants.onBackSuccess] is Function) {
+      return extra[RouteConstants.onBackSuccess];
+    }
+    return null;
+  }
 }

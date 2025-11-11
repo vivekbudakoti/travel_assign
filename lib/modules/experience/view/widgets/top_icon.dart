@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_assign/core/theme/colors.dart';
+import 'package:travel_assign/core/widgets/app_circular_button.dart';
 
 class TopIcon extends StatelessWidget {
   final VoidCallback? onTap;
@@ -9,17 +9,6 @@ class TopIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: AppColors.white,
-      borderRadius: BorderRadius.circular(100),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(100),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(6.0),
-          child: Icon(icon, color: AppColors.primaryDark, size: 22),
-        ),
-      ),
-    );
+    return AppCircleButton(onTap: onTap, icon: icon, isTranslucent: false);
   }
 }

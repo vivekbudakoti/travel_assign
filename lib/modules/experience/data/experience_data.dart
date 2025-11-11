@@ -11,7 +11,7 @@ class ExperienceLocalData extends ExperienceData {
   Future<List<ExperienceDataModel>> getExperiences({List<String> interests = const []}) async {
     await Future.delayed(Duration(milliseconds: 250));
     Map<String, Map<String, dynamic>> filteredData = {};
-    final savedJson = CommonUtil().getSavedExpFromSharedPref();
+    final savedJson = CommonUtil.instance.getSavedExpFromSharedPref();
     experienceRawData.forEach((key, value) {
       Map<String, dynamic> currentData = Map.from(value);
       bool isAdded = false;

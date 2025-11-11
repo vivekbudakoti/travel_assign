@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:travel_assign/core/utils/extension.dart';
+import 'package:travel_assign/core/widgets/app_circular_button.dart';
 
 class TransluentCircleAvatar extends StatelessWidget {
   final VoidCallback? onTap;
@@ -9,17 +8,6 @@ class TransluentCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 12, right: 12),
-      child: Material(
-        color: context.colorScheme.primary.withValues(alpha: .7),
-        borderRadius: BorderRadius.circular(100),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(100),
-          onTap: onTap,
-          child: Padding(padding: const EdgeInsets.all(8.0), child: child),
-        ),
-      ),
-    );
+    return AppCircleButton(onTap: onTap, isTranslucent: true, child: child);
   }
 }

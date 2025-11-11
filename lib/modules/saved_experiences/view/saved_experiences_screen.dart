@@ -27,9 +27,7 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
   @override
   void initState() {
     super.initState();
-    if (widget.extra is Map && (widget.extra as Map)[RouteConstants.onBackSuccess] is Function) {
-      _onBack = (widget.extra as Map)[RouteConstants.onBackSuccess];
-    }
+    _onBack = CommonUtil.instance.getOnBackFromExtra(extra: widget.extra);
   }
 
   @override
@@ -86,7 +84,7 @@ class _SavedExperiencesScreenState extends State<SavedExperiencesScreen> {
                                     _toggleSavedPrefChanged();
                                   },
                                   onTapCard: (data) {
-                                    CommonUtil().navigateToExperienceDetail(
+                                    CommonUtil.instance.navigateToExperienceDetail(
                                       context: context,
                                       id: data.id,
                                       extra: {

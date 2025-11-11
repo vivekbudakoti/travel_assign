@@ -10,7 +10,7 @@ class ExperienceDetailsLocalData extends ExperienceDetailsData {
   @override
   Future<ExperienceDataModel?> getDetails(String id) async {
     final Map<String, dynamic> experience = Map.from(experienceRawData[id] ?? {});
-    final savedData = CommonUtil().getSavedExpFromSharedPref();
+    final savedData = CommonUtil.instance.getSavedExpFromSharedPref();
     experience['is_saved'] = savedData[id] != null;
     return ExperienceDataModel.fromMap(experience);
   }

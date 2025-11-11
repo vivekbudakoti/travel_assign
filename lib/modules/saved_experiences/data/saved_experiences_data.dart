@@ -15,7 +15,7 @@ class SavedExperiencesLocalData extends SavedExperiencesData {
   @override
   Future<bool> saveExperiences({required String id}) async {
     if (experienceRawData[id] != null) {
-      final savedJson = CommonUtil().getSavedExpFromSharedPref();
+      final savedJson = CommonUtil.instance.getSavedExpFromSharedPref();
       final Map<String, dynamic> experience = Map.from(experienceRawData[id] ?? {});
       experience['is_saved'] = true;
       savedJson[id] = experience;
@@ -26,14 +26,14 @@ class SavedExperiencesLocalData extends SavedExperiencesData {
 
   @override
   Future<bool> removeExperiences({required String id}) async {
-    final savedJson = CommonUtil().getSavedExpFromSharedPref();
+    final savedJson = CommonUtil.instance.getSavedExpFromSharedPref();
     savedJson.remove(id);
     return _setSavedExperience(savedJson);
   }
 
   @override
   Future<List<ExperienceDataModel>> getSavedExperiences() async {
-    final savedJson = CommonUtil().getSavedExpFromSharedPref();
+    final savedJson = CommonUtil.instance.getSavedExpFromSharedPref();
     return ExperienceDataModel.getListFromRawData(savedJson);
   }
 

@@ -39,7 +39,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
               color: AppColors.graniteGray,
               onRefresh: () async {
                 if (state is! ExperienceLoadingState) {
-                  expereinceBloc.getExperiences(interests: _selectedInterests);
+                  expereinceBloc.getExperiences(interests: _selectedInterests, isRefresh: true);
                 }
               },
               child: Column(
@@ -101,7 +101,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                           : ExperienceGridview(
                               experienceData: state.experienceData,
                               onTapCard: (data) {
-                                CommonUtil().navigateToExperienceDetail(
+                                CommonUtil.instance.navigateToExperienceDetail(
                                   context: context,
                                   id: data.id,
                                   extra: {

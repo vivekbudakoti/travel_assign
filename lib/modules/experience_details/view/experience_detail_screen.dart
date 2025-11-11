@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_assign/core/constants/constants.dart';
 import 'package:travel_assign/core/theme/colors.dart';
+import 'package:travel_assign/core/utils/common.dart';
 import 'package:travel_assign/core/utils/extension.dart';
 import 'package:travel_assign/core/widgets/app_carousel.dart';
 import 'package:travel_assign/core/widgets/no_data_widget.dart';
@@ -47,9 +48,7 @@ class _ExperienceDetailScreenState extends State<_ExperienceDetailScreen> {
   void initState() {
     super.initState();
     context.read<ExperienceDetailsCubit>().getDetails(id: widget.id);
-    if (widget.extra is Map && (widget.extra as Map)[RouteConstants.onBackSuccess] is Function) {
-      _onBack = (widget.extra as Map)[RouteConstants.onBackSuccess];
-    }
+    _onBack = CommonUtil.instance.getOnBackFromExtra(extra: widget.extra);
   }
 
   @override
