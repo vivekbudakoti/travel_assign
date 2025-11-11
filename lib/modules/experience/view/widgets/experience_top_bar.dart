@@ -8,7 +8,7 @@ import 'package:travel_assign/modules/experience/view/widgets/top_icon.dart';
 import 'package:travel_assign/gen/assets.gen.dart';
 
 class ExperienceTopBar extends StatelessWidget {
-  final  VoidCallback onTapHeartIcon;
+  final VoidCallback onTapHeartIcon;
   const ExperienceTopBar({super.key, required this.onTapHeartIcon});
 
   @override
@@ -19,7 +19,7 @@ class ExperienceTopBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              AppAssetImage(imagePath: Assets.icons.appLogo, height: 25, width: 25),
+              AppAssetImage(imagePath: Assets.images.appLogo.path, height: 25, width: 25),
               6.horizontalSizedBox,
               const AppName(isLarge: false),
             ],
@@ -36,10 +36,7 @@ class ExperienceTopBar extends StatelessWidget {
             },
           ),
           12.horizontalSizedBox,
-          TopIcon(
-            icon: Icons.favorite_outline_rounded,
-            onTap: onTapHeartIcon,
-          ),
+          TopIcon(icon: Icons.favorite_outline_rounded, onTap: onTapHeartIcon),
         ],
       ),
     );

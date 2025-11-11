@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
             CircleAvatar(
               radius: 75,
               backgroundColor: context.colorScheme.surface,
-              child: AppAssetImage(imagePath: Assets.icons.appLogo, height: 80, width: 80),
+              child: AppAssetImage(imagePath: Assets.images.appLogo.path, height: 80, width: 80),
             ),
             10.verticalSizedBox,
             AppName(),
